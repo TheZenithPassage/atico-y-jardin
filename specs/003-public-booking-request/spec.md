@@ -4,8 +4,6 @@
 
 **Created**: 2026-06-30
 
-**Status**: Draft
-
 **Input**: Plan the v0.3.0 public booking request flow that connects the public website to private review without creating confirmed reservations automatically.
 
 ## User Scenarios, Technical Outcomes & Testing *(mandatory)*

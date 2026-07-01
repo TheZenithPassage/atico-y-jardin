@@ -61,7 +61,7 @@ export class LoginPage {
   }
 
   private getReturnUrl(): string {
-    return this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+    return this.route.snapshot.queryParamMap.get('returnUrl') || '/dashboard';
   }
 
   private getLoginErrorMessage(error: unknown): string {

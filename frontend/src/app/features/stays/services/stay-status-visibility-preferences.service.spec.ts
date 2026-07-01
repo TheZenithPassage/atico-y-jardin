@@ -3,7 +3,7 @@ import { getDefaultStayStatusVisibility, StayStatusVisibility } from '../utils/s
 import { StayStatusVisibilityPreferencesService } from './stay-status-visibility-preferences.service';
 
 describe('StayStatusVisibilityPreferencesService', () => {
-  const storageKey = 'catworld.stay.statusVisibility';
+  const storageKey = 'atico-y-jardin.stay.statusVisibility';
 
   let service: StayStatusVisibilityPreferencesService;
 

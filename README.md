@@ -12,7 +12,8 @@ runtime code has not yet been fully rebranded or refactored.
 
 ## Current Status
 
-Status: planning/demo adaptation.
+Status: v0.1.0 public landing implementation in progress on the transition
+baseline.
 
 Implemented today:
 
@@ -20,12 +21,14 @@ Implemented today:
 - Angular frontend and Spring Boot backend baseline.
 - Existing private login/admin behavior from the inherited application.
 - Existing Docker Compose, Flyway, and CI setup.
+- Public Ático y Jardín landing route with separate Ático and Jardín sections,
+  placeholder galleries, location/contact placeholders, and an honest inquiry
+  CTA.
 
 Planned next:
 
-- v0.1.0 public landing page for the Friday, 2026-07-03 demo.
-- Clear public separation between Ático and Jardín.
-- Separate galleries, apartment information, location/contact, and inquiry CTA.
+- Replace public landing TODO content and image placeholders with
+  owner-approved material.
 - Later private reservation management adapted from CatWorld stays.
 - Later public booking requests that do not become confirmed reservations automatically.
 

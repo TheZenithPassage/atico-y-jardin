@@ -10,7 +10,7 @@ import {
   providedIn: 'root',
 })
 export class StayStatusVisibilityPreferencesService {
-  private readonly storageKey = 'catworld.stay.statusVisibility';
+  private readonly storageKey = 'atico-y-jardin.stay.statusVisibility';
 
   read(): StayStatusVisibility {
     const defaultVisibility = getDefaultStayStatusVisibility();

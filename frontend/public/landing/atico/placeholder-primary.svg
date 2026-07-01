@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" role="img" aria-label="TODO(images): foto principal del Ático pendiente">
+  <rect width="900" height="675" fill="#f7f4ec" />
+  <rect x="70" y="70" width="760" height="535" rx="24" fill="#e6f1ec" />
+  <rect x="128" y="132" width="360" height="400" rx="18" fill="#214f4b" opacity=".92" />
+  <rect x="532" y="132" width="240" height="190" rx="18" fill="#d36f45" opacity=".85" />
+  <rect x="532" y="354" width="240" height="178" rx="18" fill="#fffdf8" />
+  <text x="168" y="228" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="800" fill="#ffffff">Ático</text>
+  <text x="168" y="290" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#ffffff">TODO(images)</text>
+</svg>

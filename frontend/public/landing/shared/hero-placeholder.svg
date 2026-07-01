@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="TODO(images): imagen principal pendiente">
+  <rect width="1200" height="900" fill="#f7f4ec" />
+  <rect x="96" y="96" width="1008" height="708" rx="28" fill="#dfeee5" />
+  <rect x="152" y="152" width="464" height="596" rx="18" fill="#214f4b" opacity=".9" />
+  <rect x="650" y="152" width="398" height="262" rx="18" fill="#d36f45" opacity=".82" />
+  <rect x="650" y="454" width="398" height="294" rx="18" fill="#f8efe7" />
+  <path d="M210 662c94-96 178-132 326-86v94H210z" fill="#f8efe7" opacity=".92" />
+  <text x="208" y="238" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800" fill="#ffffff">Ático y Jardín</text>
+  <text x="690" y="292" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#ffffff">TODO(images)</text>
+  <text x="690" y="548" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#315f5b">Fotos reales pendientes</text>
+</svg>

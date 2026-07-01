@@ -15,5 +15,5 @@ export const adminGuard: CanActivateFn = (_route, state) => {
     });
   }
 
-  return authSessionService.hasRole('ADMIN') ? true : router.createUrlTree(['/']);
+  return authSessionService.hasRole('ADMIN') ? true : router.createUrlTree(['/dashboard']);
 };

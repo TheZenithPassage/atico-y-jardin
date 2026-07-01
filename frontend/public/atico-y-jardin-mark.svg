@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ático y Jardín">
+  <rect width="64" height="64" rx="14" fill="#214f4b" />
+  <path d="M12 47h40V17H12v30Z" fill="#f8efe7" opacity=".95" />
+  <path d="M18 41h28V23H18v18Z" fill="#d36f45" opacity=".86" />
+  <text
+    x="32"
+    y="38"
+    text-anchor="middle"
+    font-family="Inter, Arial, sans-serif"
+    font-size="16"
+    font-weight="800"
+    fill="#ffffff"
+  >ÁJ</text>
+</svg>

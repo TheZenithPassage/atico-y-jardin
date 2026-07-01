@@ -8,7 +8,7 @@ import { APP_TRANSLATIONS } from './app-translations';
   providedIn: 'root',
 })
 export class I18nService {
-  private readonly storageKey = 'catworld.language';
+  private readonly storageKey = 'atico-y-jardin.language';
   private readonly document = inject(DOCUMENT);
 
   readonly language = signal<AppLanguage>(this.readStoredLanguage());
