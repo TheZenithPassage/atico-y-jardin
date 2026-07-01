@@ -21,9 +21,9 @@ export interface AuthTranslations {
 export const AUTH_TRANSLATIONS = {
   es: {
     login: {
-      logoAlt: 'Logo de CatWorld',
-      title: 'Iniciar sesión',
-      description: 'Introduce tus credenciales para continuar.',
+      logoAlt: 'Marca Ático y Jardín',
+      title: 'Acceso privado',
+      description: 'Introduce tus credenciales para continuar al área interna.',
       username: 'Usuario',
       password: 'Contraseña',
       submit: 'Entrar',
@@ -38,9 +38,9 @@ export const AUTH_TRANSLATIONS = {
   },
   en: {
     login: {
-      logoAlt: 'CatWorld logo',
-      title: 'Login',
-      description: 'Enter your credentials to continue.',
+      logoAlt: 'Ático y Jardín mark',
+      title: 'Private access',
+      description: 'Enter your credentials to continue to the internal area.',
       username: 'Username',
       password: 'Password',
       submit: 'Log in',

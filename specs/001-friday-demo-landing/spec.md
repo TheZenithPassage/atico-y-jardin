@@ -4,8 +4,6 @@
 
 **Created**: 2026-06-30
 
-**Status**: Draft
-
 **Input**: Plan a professional public landing page for Ático y Jardín to demo on Friday, 2026-07-03, without implementing the application yet.
 
 ## User Scenarios, Technical Outcomes & Testing *(mandatory)*

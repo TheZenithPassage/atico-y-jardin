@@ -1,0 +1,203 @@
+<section class="landing-page">
+  <section class="hero" aria-labelledby="landing-title">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ text().publicLanding.hero.eyebrow }}</p>
+      <h2 id="landing-title">{{ text().publicLanding.hero.title }}</h2>
+      <p class="hero-subtitle">{{ text().publicLanding.hero.subtitle }}</p>
+      <div class="hero-actions">
+        <a href="#contact" class="primary-action">{{ text().publicLanding.hero.primaryCta }}</a>
+        <a href="#atico" class="secondary-action">{{ text().publicLanding.hero.secondaryCta }}</a>
+      </div>
+    </div>
+
+    <figure class="hero-visual">
+      <img src="/landing/shared/hero-placeholder.svg" [alt]="text().publicLanding.hero.imageAlt" />
+      <figcaption>{{ text().publicLanding.intro.notes[0] }}</figcaption>
+    </figure>
+  </section>
+
+  <section class="brand-intro" aria-labelledby="brand-intro-title">
+    <div>
+      <p class="eyebrow">v0.1.0</p>
+      <h2 id="brand-intro-title">{{ text().publicLanding.intro.title }}</h2>
+      <p>{{ text().publicLanding.intro.body }}</p>
+    </div>
+
+    <ul class="intro-notes" aria-label="Content status">
+      @for (note of text().publicLanding.intro.notes; track note) {
+        <li>{{ note }}</li>
+      }
+    </ul>
+  </section>
+
+  @for (apartment of text().publicLanding.apartments; track apartment.id) {
+    <section
+      class="apartment-section"
+      [id]="apartment.id"
+      [attr.aria-labelledby]="apartment.id + '-title'"
+    >
+      <div class="section-heading">
+        <p class="eyebrow">{{ apartment.displayName }}</p>
+        <h2 [id]="apartment.id + '-title'">{{ apartment.headline }}</h2>
+        <p>{{ apartment.summary }}</p>
+      </div>
+
+      <div class="apartment-layout">
+        <section class="gallery" [attr.aria-labelledby]="apartment.id + '-gallery-title'">
+          <div class="subsection-heading">
+            <p class="eyebrow">{{ text().publicLanding.sectionLabels.gallery }}</p>
+            <h3 [id]="apartment.id + '-gallery-title'">{{ apartment.displayName }}</h3>
+          </div>
+
+          <figure class="gallery-primary">
+            <img [src]="apartment.gallery[0].src" [alt]="apartment.gallery[0].alt" />
+            <figcaption>{{ apartment.gallery[0].caption }}</figcaption>
+          </figure>
+
+          <div class="gallery-grid">
+            @for (image of apartment.gallery; track image.src; let first = $first) {
+              @if (!first) {
+                <figure>
+                  <img [src]="image.src" [alt]="image.alt" />
+                  <figcaption>{{ image.caption }}</figcaption>
+                </figure>
+              }
+            }
+          </div>
+        </section>
+
+        <div class="apartment-details">
+          <section class="detail-group" [attr.aria-labelledby]="apartment.id + '-info-title'">
+            <div class="subsection-heading">
+              <p class="eyebrow">{{ text().publicLanding.sectionLabels.information }}</p>
+              <h3 [id]="apartment.id + '-info-title'">{{ apartment.displayName }}</h3>
+            </div>
+            <p>{{ apartment.description }}</p>
+
+            <dl class="info-list">
+              <div>
+                <dt>{{ text().publicLanding.infoLabels.capacity }}</dt>
+                <dd>{{ apartment.capacityLabel }}</dd>
+              </div>
+              <div>
+                <dt>{{ text().publicLanding.infoLabels.bedrooms }}</dt>
+                <dd>{{ apartment.bedroomsLabel }}</dd>
+              </div>
+              <div>
+                <dt>{{ text().publicLanding.infoLabels.bathrooms }}</dt>
+                <dd>{{ apartment.bathroomsLabel }}</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="detail-group" [attr.aria-labelledby]="apartment.id + '-amenities-title'">
+            <div class="subsection-heading">
+              <p class="eyebrow">{{ text().publicLanding.sectionLabels.amenities }}</p>
+              <h3 [id]="apartment.id + '-amenities-title'">{{ apartment.displayName }}</h3>
+            </div>
+            <ul class="amenity-list">
+              @for (amenity of apartment.amenities; track amenity.label) {
+                <li>{{ amenity.label }}</li>
+              }
+            </ul>
+          </section>
+
+          <section class="detail-group" [attr.aria-labelledby]="apartment.id + '-location-title'">
+            <div class="subsection-heading">
+              <p class="eyebrow">{{ text().publicLanding.sectionLabels.location }}</p>
+              <h3 [id]="apartment.id + '-location-title'">{{ apartment.location.title }}</h3>
+            </div>
+            <p>{{ apartment.location.description }}</p>
+            <p class="pending-line">{{ apartment.location.addressDisplay }}</p>
+          </section>
+
+          <section class="apartment-cta" [attr.aria-labelledby]="apartment.id + '-cta-title'">
+            <h3 [id]="apartment.id + '-cta-title'">
+              {{ text().publicLanding.sectionLabels.inquiry }}
+            </h3>
+            <p>{{ text().publicLanding.inquiry.helperText }}</p>
+            <a href="#contact" class="primary-action">{{ apartment.ctaLabel }}</a>
+          </section>
+        </div>
+      </div>
+    </section>
+  }
+
+  <section class="location-contact" id="location" aria-labelledby="shared-location-title">
+    <div class="section-heading">
+      <p class="eyebrow">{{ text().publicLanding.nav.location }}</p>
+      <h2 id="shared-location-title">{{ text().publicLanding.sharedLocation.title }}</h2>
+      <p>{{ text().publicLanding.sharedLocation.description }}</p>
+    </div>
+
+    <div class="contact-layout" id="contact">
+      <section class="contact-details" aria-labelledby="contact-title">
+        <h3 id="contact-title">{{ text().publicLanding.nav.contact }}</h3>
+        <dl>
+          <div>
+            <dt>{{ text().publicLanding.contact.displayName }}</dt>
+            <dd>{{ text().publicLanding.contact.preferredContactMethod }}</dd>
+          </div>
+          <div>
+            <dt>{{ text().publicLanding.contact.email }}</dt>
+            <dd>{{ text().publicLanding.contact.phone }}</dd>
+          </div>
+          <div>
+            <dt>{{ text().publicLanding.sharedLocation.addressDisplay }}</dt>
+            <dd>{{ text().publicLanding.sharedLocation.mapPlaceholder }}</dd>
+          </div>
+        </dl>
+      </section>
+
+      <form
+        class="inquiry-form"
+        aria-labelledby="inquiry-title"
+        (submit)="blockInquirySubmit($event)"
+      >
+        <h3 id="inquiry-title">{{ text().publicLanding.inquiry.title }}</h3>
+        <p>{{ text().publicLanding.inquiry.description }}</p>
+
+        <label>
+          {{ text().publicLanding.inquiry.apartmentLabel }}
+          <select disabled>
+            <option>{{ text().publicLanding.inquiry.apartmentOptions.atico }}</option>
+            <option>{{ text().publicLanding.inquiry.apartmentOptions.jardin }}</option>
+            <option>{{ text().publicLanding.inquiry.apartmentOptions.either }}</option>
+          </select>
+        </label>
+
+        <div class="form-grid">
+          <label>
+            {{ text().publicLanding.inquiry.checkInLabel }}
+            <input type="text" readonly placeholder="TODO(owner/user)" />
+          </label>
+          <label>
+            {{ text().publicLanding.inquiry.checkOutLabel }}
+            <input type="text" readonly placeholder="TODO(owner/user)" />
+          </label>
+        </div>
+
+        <label>
+          {{ text().publicLanding.inquiry.guestNameLabel }}
+          <input type="text" readonly placeholder="TODO(guest)" />
+        </label>
+        <label>
+          {{ text().publicLanding.inquiry.guestContactLabel }}
+          <input type="text" readonly placeholder="TODO(guest)" />
+        </label>
+        <label>
+          {{ text().publicLanding.inquiry.messageLabel }}
+          <textarea readonly placeholder="TODO(guest)"></textarea>
+        </label>
+
+        <button type="submit" disabled>{{ text().publicLanding.inquiry.submitLabel }}</button>
+        <p class="pending-line">{{ text().publicLanding.inquiry.helperText }}</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="landing-footer">
+    <p>{{ text().publicLanding.footer.brandLine }}</p>
+    <p>{{ text().publicLanding.footer.legal }}</p>
+  </footer>
+</section>

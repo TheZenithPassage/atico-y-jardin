@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-$catworld-material-theme: (
+$atico-y-jardin-material-theme: (
   color: (
     primary: mat.$orange-palette,
     tertiary: mat.$cyan-palette,
@@ -70,7 +70,7 @@ $catworld-material-theme: (
 
 html {
   @include mat.theme(
-    $catworld-material-theme,
+    $atico-y-jardin-material-theme,
     (
       primary: #e8893f,
       on-primary: #ffffff,

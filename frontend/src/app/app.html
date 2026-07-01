@@ -1,16 +1,18 @@
 <header class="app-header">
   <h1>
     <a routerLink="/" class="app-brand">
-      <span class="app-brand-logo">
-        <img src="/catworld-logo.png" [alt]="text().app.logoAlt" />
-      </span>
+      <span class="app-brand-logo" aria-hidden="true">ÁJ</span>
       <span>{{ text().app.brand }}</span>
     </a>
   </h1>
 
   @if (authenticated()) {
-    <nav>
-      <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+    <nav class="private-nav" aria-label="Private navigation">
+      <a
+        routerLink="/dashboard"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         {{ text().app.nav.dashboard }}
       </a>
       <a routerLink="/stays" routerLinkActive="active-link">{{ text().app.nav.stays }}</a>
@@ -21,6 +23,24 @@
       @if (authenticated()?.role === 'ADMIN') {
         <a routerLink="/accounts" routerLinkActive="active-link">{{ text().app.nav.accounts }}</a>
       }
+    </nav>
+  } @else {
+    <nav class="public-nav" aria-label="Public navigation">
+      <a href="/#atico" (click)="navigateToPublicSection($event, 'atico')">
+        {{ text().publicLanding.nav.atico }}
+      </a>
+      <a href="/#jardin" (click)="navigateToPublicSection($event, 'jardin')">
+        {{ text().publicLanding.nav.jardin }}
+      </a>
+      <a href="/#location" (click)="navigateToPublicSection($event, 'location')">
+        {{ text().publicLanding.nav.location }}
+      </a>
+      <a href="/#contact" (click)="navigateToPublicSection($event, 'contact')">
+        {{ text().publicLanding.nav.contact }}
+      </a>
+      <a routerLink="/login" class="private-access-link">
+        {{ text().publicLanding.nav.privateAccess }}
+      </a>
     </nav>
   }
 

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" aria-label="TODO(images): segunda imagen adicional del Jardín pendiente">
+  <rect width="720" height="720" fill="#f7f4ec" />
+  <rect x="86" y="86" width="548" height="548" rx="22" fill="#eef6f0" />
+  <rect x="150" y="152" width="420" height="232" rx="18" fill="#79a987" opacity=".9" />
+  <rect x="150" y="420" width="420" height="96" rx="18" fill="#315f5b" opacity=".92" />
+  <text x="184" y="266" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" fill="#ffffff">Jardín</text>
+  <text x="184" y="468" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff">TODO(images)</text>
+</svg>

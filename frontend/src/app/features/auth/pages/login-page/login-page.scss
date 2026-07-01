@@ -37,19 +37,13 @@ label {
   width: 9rem;
   height: 9rem;
   margin: 0 auto 0.55rem;
-  padding: 0.28rem;
-  border: 1px solid rgb(234 216 198 / 0.95);
+  border: 1px solid rgb(42 92 88 / 0.24);
   border-radius: 999px;
-  background: #fffdf8;
-  box-shadow: 0 16px 34px rgb(91 63 38 / 0.16);
-  overflow: hidden;
-}
-
-.login-logo img {
-  width: 100%;
-  height: 100%;
-  border-radius: 999px;
-  object-fit: cover;
+  background: linear-gradient(135deg, #214f4b, #d36f45);
+  color: #ffffff;
+  box-shadow: 0 16px 34px rgb(41 59 57 / 0.16);
+  font-size: 2rem;
+  font-weight: 850;
 }
 
 @media (max-width: 520px) {

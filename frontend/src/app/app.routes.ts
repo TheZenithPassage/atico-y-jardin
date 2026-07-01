@@ -25,6 +25,13 @@ export const routes: Routes = [
   },
   {
     path: '',
+    loadComponent: () =>
+      import('./features/public/pages/public-landing-page/public-landing-page').then(
+        (component) => component.PublicLandingPage,
+      ),
+  },
+  {
+    path: 'dashboard',
     canActivate: [authGuard],
     component: DashboardPage,
   },

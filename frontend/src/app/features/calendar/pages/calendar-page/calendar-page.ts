@@ -54,7 +54,7 @@ export class CalendarPage {
     StayStatusVisibilityPreferencesService,
   );
 
-  private readonly calendarPreferencesStorageKey = 'catworld.calendar.preferences';
+  private readonly calendarPreferencesStorageKey = 'atico-y-jardin.calendar.preferences';
   private readonly storedCalendarPreferences = this.readStoredCalendarPreferences();
 
   readonly text = this.i18nService.text;

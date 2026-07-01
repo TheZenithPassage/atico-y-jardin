@@ -4,8 +4,6 @@
 
 **Created**: 2026-06-30
 
-**Status**: Draft
-
 **Input**: Plan the v0.2.0 private reservation-management alpha that adapts the inherited CatWorld private administration system for Ático y Jardín.
 
 ## User Scenarios, Technical Outcomes & Testing *(mandatory)*

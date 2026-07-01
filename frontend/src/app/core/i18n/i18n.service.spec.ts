@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { I18nService } from './i18n.service';
 
 describe('I18nService', () => {
-  const storageKey = 'catworld.language';
+  const storageKey = 'atico-y-jardin.language';
 
   let service: I18nService;
 

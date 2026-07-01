@@ -22,8 +22,8 @@ export interface AppShellTranslations {
 
 export const APP_SHELL_TRANSLATIONS = {
   es: {
-    brand: 'CatWorld',
-    logoAlt: 'Logo de CatWorld',
+    brand: 'Ático y Jardín',
+    logoAlt: 'Marca Ático y Jardín',
     nav: {
       dashboard: 'Panel de administración',
       stays: 'Estancias',
@@ -41,8 +41,8 @@ export const APP_SHELL_TRANSLATIONS = {
     logout: 'Cerrar sesión',
   },
   en: {
-    brand: 'CatWorld',
-    logoAlt: 'CatWorld logo',
+    brand: 'Ático y Jardín',
+    logoAlt: 'Ático y Jardín mark',
     nav: {
       dashboard: 'Dashboard',
       stays: 'Stays',

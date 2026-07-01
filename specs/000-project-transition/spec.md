@@ -4,8 +4,6 @@
 
 **Created**: 2026-06-30
 
-**Status**: Draft
-
 **Input**: Transition the inherited CatWorld repository into planning/specification artifacts for the new Ático y Jardín product without implementing application functionality.
 
 ## User Scenarios, Technical Outcomes & Testing *(mandatory)*

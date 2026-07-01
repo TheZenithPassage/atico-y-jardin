@@ -51,7 +51,7 @@ describe('adminGuard', () => {
 
     const result = executeGuard(route, state);
 
-    expect(router.serializeUrl(result as UrlTree)).toBe('/');
+    expect(router.serializeUrl(result as UrlTree)).toBe('/dashboard');
   });
 
   it('uses the existing login flow for an unauthenticated user', () => {
