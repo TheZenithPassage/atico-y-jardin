@@ -1,0 +1,109 @@
+@startuml
+hide methods
+hide stereotypes
+skinparam classAttributeIconSize 0
+
+package "MySQL schema" {
+
+  class owners <<table>> {
+    +uuid id <<PK>>
+    --
+    full_name <<NN>>
+    address
+    primary_phone <<NN>>
+    secondary_phone
+    secondary_phone_name
+    instagram
+    facebook
+    --
+    created_at <<NN>>
+    updated_at <<NN>>
+  }
+
+  class vets <<table>> {
+    +uuid id <<PK>>
+    --
+    name <<NN>>
+    address
+    phone_number
+    --
+    created_at <<NN>>
+    updated_at <<NN>>
+  }
+
+  class cats <<table>> {
+    +uuid id <<PK>>
+    --
+    name <<NN>>
+    birth_date <<NN>>
+    sex <<NN>>
+    breed
+    coat
+    color
+    food_brand
+    litter_brand
+    personality
+    last_internal_dewormer_name
+    last_internal_deworming_date
+    last_external_dewormer_name
+    last_external_deworming_date
+    last_triple_feline_date
+    last_rabies_date
+    owner_id <<FK,NN>>
+    vet_id <<FK>>
+    --
+    created_at <<NN>>
+    updated_at <<NN>>
+  }
+
+  class stays <<table>> {
+    +uuid id <<PK>>
+    --
+    owner_id <<FK,NN>>
+    start_at <<NN>>
+    end_at <<NN>>
+    cancelled_at
+    notes
+    --
+    created_at <<NN>>
+    updated_at <<NN>>
+  }
+
+  class stay_cat <<table>> {
+    +stay_id <<PK,FK,NN>>
+    +cat_id <<PK,FK,NN>>
+  }
+
+  class user_accounts <<table>> {
+    +uuid id <<PK>>
+    --
+    username <<NN,UQ>>
+    password_hash <<NN>>
+    role <<NN>>
+    enabled <<NN>>
+    --
+    created_at <<NN>>
+    updated_at <<NN>>
+  }
+
+  owners "1" -- "0..*" cats : FK owner_id
+  vets   "0..1" -- "0..*" cats : FK vet_id (nullable)
+  owners "1" -- "0..*" stays : FK owner_id
+  stays  "1" -- "1..*" stay_cat : FK stay_id
+  cats   "1" -- "0..*" stay_cat : FK cat_id
+}
+
+note right of stays
+There is no status column.
+The app computes it.
+
+The relationship with cats is
+resolved through stay_cat.
+end note
+
+note bottom of stay_cat
+The pair (stay_id, cat_id)
+cannot be repeated.
+end note
+
+@enduml

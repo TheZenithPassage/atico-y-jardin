@@ -1,0 +1,103 @@
+<section class="stay-create-page">
+  <header class="page-header">
+    <h2>{{ text().stays.create.title }}</h2>
+    <p>{{ text().stays.create.description }}</p>
+  </header>
+
+  @if (loadingData()) {
+    <p>{{ text().stays.create.loading }}</p>
+  } @else {
+    <form class="stay-form" (ngSubmit)="submit()">
+      @if (error()) {
+        <div class="error-message">
+          <p>{{ error() }}</p>
+        </div>
+      }
+
+      <label>
+        {{ text().stays.create.owner }}
+        <select
+          #ownerSelect
+          [ngModel]="selectedOwnerId()"
+          name="ownerId"
+          (change)="onOwnerChange(ownerSelect.value)"
+        >
+          <option value="">{{ text().stays.create.selectOwner }}</option>
+
+          @for (owner of owners(); track owner.id) {
+            <option [value]="owner.id">
+              {{ owner.fullName }}
+            </option>
+          }
+        </select>
+        <a routerLink="/owners/new" [queryParams]="{ returnTo: '/stays/new' }">
+          {{ text().stays.create.createOwner }}
+        </a>
+      </label>
+
+      @if (selectedOwnerId()) {
+        <fieldset>
+          <legend>{{ text().stays.create.cats }}</legend>
+
+          @if (filteredCats().length === 0) {
+            <p>{{ text().stays.create.noCatsForOwner }}</p>
+          } @else {
+            @for (cat of filteredCats(); track cat.id) {
+              <label class="checkbox-field">
+                <input
+                  #catCheckbox
+                  type="checkbox"
+                  [checked]="isCatSelected(cat.id)"
+                  (change)="onCatToggle(cat.id, catCheckbox.checked)"
+                />
+                {{ cat.name }}
+              </label>
+            }
+          }
+        </fieldset>
+        <a
+          routerLink="/cats/new"
+          [queryParams]="{ returnTo: '/stays/new', ownerId: selectedOwnerId() }"
+        >
+          {{ text().stays.create.createCat }}
+        </a>
+      }
+
+      <label>
+        {{ text().stays.create.startDateTime }}
+        <input
+          type="datetime-local"
+          name="startAt"
+          [ngModel]="startAt()"
+          (ngModelChange)="startAt.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().stays.create.endDateTime }}
+        <input
+          type="datetime-local"
+          name="endAt"
+          [ngModel]="endAt()"
+          (ngModelChange)="endAt.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().stays.create.notes }}
+        <textarea
+          name="notes"
+          rows="4"
+          [ngModel]="notes()"
+          (ngModelChange)="notes.set($event)"
+        ></textarea>
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="submitting()">
+          {{ submitting() ? text().stays.create.submitting : text().stays.create.submit }}
+        </button>
+      </div>
+    </form>
+  }
+</section>

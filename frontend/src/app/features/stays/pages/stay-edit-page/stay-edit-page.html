@@ -1,0 +1,69 @@
+<section class="stay-edit-page">
+  <header class="page-header">
+    <div>
+      <h2>{{ text().stays.edit.title }}</h2>
+      <p>{{ text().stays.edit.description }}</p>
+    </div>
+
+    <a routerLink="/stays" class="secondary-action">{{ text().stays.edit.backToStays }}</a>
+  </header>
+
+  @if (loading()) {
+    <p>{{ text().stays.edit.loading }}</p>
+  } @else {
+    @if (error()) {
+      <div class="error-message">
+        <p>{{ error() }}</p>
+      </div>
+    }
+
+    @if (stayLoaded()) {
+      <div class="stay-summary">
+        <p>
+          <strong>{{ text().stays.edit.owner }}:</strong> {{ ownerName() }}
+        </p>
+        <p>
+          <strong>{{ text().stays.edit.cats }}:</strong> {{ catNames() }}
+        </p>
+      </div>
+
+      <form class="stay-form" (ngSubmit)="submit()">
+        <label>
+          {{ text().stays.edit.startDateTime }}
+          <input
+            type="datetime-local"
+            name="startAt"
+            [ngModel]="startAt()"
+            (ngModelChange)="startAt.set($event)"
+          />
+        </label>
+
+        <label>
+          {{ text().stays.edit.endDateTime }}
+          <input
+            type="datetime-local"
+            name="endAt"
+            [ngModel]="endAt()"
+            (ngModelChange)="endAt.set($event)"
+          />
+        </label>
+
+        <label>
+          {{ text().stays.edit.notes }}
+          <textarea
+            name="notes"
+            rows="4"
+            [ngModel]="notes()"
+            (ngModelChange)="notes.set($event)"
+          ></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" [disabled]="submitting()">
+            {{ submitting() ? text().stays.edit.submitting : text().stays.edit.submit }}
+          </button>
+        </div>
+      </form>
+    }
+  }
+</section>

@@ -1,0 +1,85 @@
+<section class="owners-overview-page">
+  <header class="page-header">
+    <div>
+      <h2>{{ text().owners.overview.title }}</h2>
+      <p>{{ text().owners.overview.description }}</p>
+    </div>
+
+    <a routerLink="/owners/new" class="primary-action">
+      {{ text().owners.overview.create }}
+    </a>
+  </header>
+
+  @if (loading()) {
+    <p>{{ text().owners.overview.loading }}</p>
+  } @else if (error()) {
+    <div class="error-message">
+      <p>{{ error() }}</p>
+      <button type="button" (click)="loadOwners()">{{ text().owners.overview.retry }}</button>
+    </div>
+  } @else if (owners().length === 0) {
+    <p>{{ text().owners.overview.empty }}</p>
+  } @else {
+    <div class="overview-search">
+      <label>
+        <span>{{ text().owners.overview.searchLabel }}</span>
+        <input
+          #searchInput
+          type="search"
+          [value]="searchText()"
+          [placeholder]="text().owners.overview.searchPlaceholder"
+          (input)="setSearchText(searchInput.value)"
+        />
+      </label>
+
+      @if (searchText()) {
+        <button type="button" class="secondary-action" (click)="clearSearch()">
+          {{ text().owners.overview.clearSearch }}
+        </button>
+      }
+    </div>
+
+    @if (filteredOwners().length === 0) {
+      <p>{{ text().owners.overview.emptyFiltered }}</p>
+    } @else {
+      <table class="owners-table">
+        <thead>
+          <tr>
+            <th>{{ text().owners.overview.table.name }}</th>
+            <th>{{ text().owners.overview.table.primaryPhone }}</th>
+            <th>{{ text().owners.overview.table.secondaryPhone }}</th>
+            <th>{{ text().owners.overview.table.address }}</th>
+            <th>{{ text().owners.overview.table.social }}</th>
+            <th>{{ text().owners.overview.table.actions }}</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (owner of filteredOwners(); track owner.id) {
+            <tr [id]="'owner-' + owner.id" [class.selected-row]="isSelectedOwner(owner)">
+              <td>{{ owner.fullName }}</td>
+              <td>{{ owner.primaryPhone }}</td>
+              <td>{{ getSecondaryPhone(owner) }}</td>
+              <td>{{ formatOptionalValue(owner.address) }}</td>
+              <td>
+                <span
+                  >{{ text().owners.overview.social.instagram }}:
+                  {{ formatOptionalValue(owner.instagram) }}</span
+                >
+                <small class="secondary-line">
+                  {{ text().owners.overview.social.facebook }}:
+                  {{ formatOptionalValue(owner.facebook) }}
+                </small>
+              </td>
+              <td>
+                <a [routerLink]="['/owners', owner.id, 'edit']">{{
+                  text().owners.overview.edit
+                }}</a>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  }
+</section>

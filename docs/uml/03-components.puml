@@ -1,0 +1,41 @@
+@startuml
+skinparam componentStyle rectangle
+
+actor "User" as user
+
+package "CatWorld (Spring Boot Monolith)" {
+  [Spring Security] as sec
+  [REST Controllers] as c
+  [DTO + Mapper] as m
+  [Services] as s
+  [Domain (Entities + Rules)] as d
+  [Repositories (JPA)] as r
+}
+
+database "MySQL (Docker)" as db
+
+user --> sec
+sec --> c
+sec --> r : user lookup
+c --> s
+s --> m
+s --> d
+s --> r
+r --> db
+
+note right of s
+Relevant business rules:
+- endAt > startAt
+- at least one cat per stay
+- all cats in a stay share the same owner
+- stay owner is consistent with the cats
+- no overlapping stays per cat
+end note
+
+note left of sec
+HTTP Basic is stateless.
+Credentials are checked against
+user_accounts.
+end note
+
+@enduml

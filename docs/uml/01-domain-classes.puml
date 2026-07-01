@@ -1,0 +1,116 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "catworld.domain" {
+
+  abstract class Auditable {
+    +Instant createdAt
+    +Instant updatedAt
+  }
+
+  class Owner extends Auditable {
+    +UUID id
+    +String fullName  <<NotNull>>
+    +String address
+    +String primaryPhone  <<NotNull>>
+    +String secondaryPhone
+    +String secondaryPhoneName
+    +String instagram
+    +String facebook
+  }
+
+  class Vet extends Auditable {
+    +UUID id
+    +String name  <<NotNull>>
+    +String address
+    +String phoneNumber
+  }
+
+  enum Sex {
+    MALE
+    FEMALE
+  }
+
+  class Cat extends Auditable {
+    +UUID id
+    +String name  <<NotNull>>
+    +LocalDate birthDate  <<NotNull>>
+    +Sex sex  <<NotNull>>
+    +String breed
+    +String coat
+    +String color
+    +String foodBrand
+    +String litterBrand
+    +String personality
+    +String lastInternalDewormerName
+    +LocalDate lastInternalDewormingDate
+    +String lastExternalDewormerName
+    +LocalDate lastExternalDewormingDate
+    +LocalDate lastTripleFelineDate
+    +LocalDate lastRabiesDate
+  }
+
+  enum StayStatus <<computed>> {
+    RESERVED
+    CHECKED_IN
+    CHECKED_OUT
+    CANCELLED
+  }
+
+  class Stay extends Auditable {
+    +UUID id
+    +LocalDateTime startAt  <<NotNull>>
+    +LocalDateTime endAt    <<NotNull>>
+    +LocalDateTime cancelledAt
+    +String notes
+    +StayStatus status  <<Transient/Computed>>
+  }
+
+  class StayCat {
+    +Stay stay
+    +Cat cat
+  }
+
+  enum UserRole {
+    ADMIN
+    STAFF
+  }
+
+  class UserAccount extends Auditable {
+    +UUID id
+    +String username  <<NotNull,Unique>>
+    +String passwordHash  <<NotNull>>
+    +UserRole role  <<NotNull>>
+    +boolean enabled  <<NotNull>>
+  }
+
+  Owner "1" o-- "0..*" Cat : owns >
+  Vet   "0..1" o-- "0..*" Cat : treats >
+  Owner "1" o-- "0..*" Stay : books >
+  Stay  "1" *-- "1..*" StayCat : includes >
+  Cat   "1" o-- "0..*" StayCat : participates >
+}
+
+note right of Stay
+status is DYNAMIC:
+- cancelledAt != null => CANCELLED
+- now < startAt => RESERVED
+- startAt <= now < endAt => CHECKED_IN
+- now >= endAt => CHECKED_OUT
+end note
+
+note bottom of Stay
+Rules:
+- endAt > startAt
+- at least 1 cat per stay
+- all cats in a stay must belong to the same owner
+- no overlapping stays per cat, ignoring cancelled stays
+end note
+
+note bottom of StayCat
+Each row represents one link
+between a stay and a cat.
+The logical key is (stay, cat).
+end note
+
+@enduml

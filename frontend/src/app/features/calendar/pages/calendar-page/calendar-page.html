@@ -1,0 +1,98 @@
+<section class="calendar-page">
+  <header class="page-header">
+    <div>
+      <h2>{{ text().calendar.title }}</h2>
+      <p>{{ text().calendar.description }}</p>
+    </div>
+
+    <div class="header-actions">
+      <a routerLink="/stays" class="secondary-action">
+        {{ text().calendar.actions.viewStays }}
+      </a>
+
+      <a routerLink="/stays/new" class="primary-action">
+        {{ text().calendar.actions.createStay }}
+      </a>
+    </div>
+  </header>
+
+  <div class="status-filters" [attr.aria-label]="text().calendar.statusFiltersAriaLabel">
+    @for (option of statusFilterOptions; track option.status) {
+      <label class="status-filter">
+        <input
+          #statusCheckbox
+          type="checkbox"
+          [checked]="isStatusVisible(option.status)"
+          (change)="setStatusVisibility(option.status, statusCheckbox.checked)"
+        />
+        {{ text().stays.status[option.status] }}
+      </label>
+    }
+  </div>
+
+  <app-stay-search-filters
+    [stays]="stays()"
+    (filtersChange)="setSearchFilters($event)"
+  ></app-stay-search-filters>
+
+  <div class="calendar-display-options">
+    @if (hasEntityFilter()) {
+      <div class="calendar-display-options-header">
+        <strong>{{ text().calendar.filteredDisplayOptions.title }}</strong>
+      </div>
+
+      <label class="calendar-display-option">
+        <input
+          #filteredDailyLabelsCheckbox
+          type="checkbox"
+          [checked]="filteredDailyLabelsEnabled()"
+          (change)="setFilteredDailyLabelsEnabled(filteredDailyLabelsCheckbox.checked)"
+        />
+        <span>
+          <strong>{{ text().calendar.filteredDisplayOptions.dailyLabels }}</strong>
+        </span>
+      </label>
+    } @else {
+      <div class="calendar-display-options-header">
+        <strong>{{ text().calendar.displayModes.title }}</strong>
+        <p>{{ text().calendar.displayModes.description }}</p>
+      </div>
+
+      <div class="calendar-display-options-list">
+        @for (displayMode of displayModeOptions; track displayMode) {
+          <label class="calendar-display-option">
+            <input
+              type="radio"
+              name="calendarDisplayMode"
+              [checked]="unfilteredDisplayMode() === displayMode"
+              (change)="setUnfilteredDisplayMode(displayMode)"
+            />
+            <span>
+              <strong>{{ text().calendar.displayModes.options[displayMode].label }}</strong>
+              <small>{{ text().calendar.displayModes.options[displayMode].description }}</small>
+            </span>
+          </label>
+        }
+      </div>
+    }
+  </div>
+
+  @if (loading()) {
+    <p>{{ text().calendar.loading }}</p>
+  } @else if (error()) {
+    <div class="error-message">
+      <p>{{ error() }}</p>
+      <button type="button" (click)="loadStays()">{{ text().calendar.actions.retry }}</button>
+    </div>
+  } @else {
+    @if (stays().length === 0) {
+      <p>{{ text().calendar.empty }}</p>
+    } @else if (filteredStays().length === 0) {
+      <p>{{ text().calendar.emptyFiltered }}</p>
+    } @else {
+      <div class="calendar-wrapper">
+        <full-calendar [options]="calendarOptions()" [events]="calendarEvents()"></full-calendar>
+      </div>
+    }
+  }
+</section>

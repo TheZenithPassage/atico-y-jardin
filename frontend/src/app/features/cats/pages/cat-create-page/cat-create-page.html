@@ -1,0 +1,185 @@
+<section class="cat-create-page">
+  <header class="page-header">
+    <h2>{{ text().cats.create.title }}</h2>
+    <p>{{ text().cats.create.description }}</p>
+  </header>
+
+  @if (loadingData()) {
+    <p>{{ text().cats.create.loadingOwners }}</p>
+  } @else {
+    <form class="cat-form" (ngSubmit)="submit()">
+      @if (error()) {
+        <div class="error-message">
+          <p>{{ error() }}</p>
+        </div>
+      }
+
+      <label>
+        {{ text().cats.form.name }}
+        <input type="text" name="name" [ngModel]="name()" (ngModelChange)="name.set($event)" />
+      </label>
+
+      <label>
+        {{ text().cats.form.birthDate }}
+        <input
+          type="date"
+          name="birthDate"
+          [ngModel]="birthDate()"
+          (ngModelChange)="birthDate.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().cats.form.sex }}
+        <select name="sex" [ngModel]="sex()" (ngModelChange)="sex.set($event)">
+          <option value="">{{ text().cats.form.selectSex }}</option>
+          <option value="MALE">{{ text().cats.form.male }}</option>
+          <option value="FEMALE">{{ text().cats.form.female }}</option>
+        </select>
+      </label>
+
+      <label>
+        {{ text().cats.form.owner }}
+        <select name="ownerId" [ngModel]="ownerId()" (ngModelChange)="ownerId.set($event)">
+          <option value="">{{ text().cats.form.selectOwner }}</option>
+
+          @for (owner of owners(); track owner.id) {
+            <option [value]="owner.id">
+              {{ owner.fullName }}
+            </option>
+          }
+        </select>
+        <a routerLink="/owners/new" [queryParams]="getCreateOwnerQueryParams()">
+          {{ text().cats.form.createOwner }}
+        </a>
+      </label>
+
+      <label>
+        {{ text().cats.form.vet }}
+        <select name="vetId" [ngModel]="vetId()" (ngModelChange)="vetId.set($event)">
+          <option value="">{{ text().cats.form.noVet }}</option>
+
+          @for (vet of vets(); track vet.id) {
+            <option [value]="vet.id">
+              {{ vet.name }}
+            </option>
+          }
+        </select>
+        <a routerLink="/vets/new" [queryParams]="getCreateVetQueryParams()">
+          {{ text().cats.form.createVet }}
+        </a>
+      </label>
+
+      <label>
+        {{ text().cats.form.breed }}
+        <input type="text" name="breed" [ngModel]="breed()" (ngModelChange)="breed.set($event)" />
+      </label>
+
+      <label>
+        {{ text().cats.form.coat }}
+        <input type="text" name="coat" [ngModel]="coat()" (ngModelChange)="coat.set($event)" />
+      </label>
+
+      <label>
+        {{ text().cats.form.color }}
+        <input type="text" name="color" [ngModel]="color()" (ngModelChange)="color.set($event)" />
+      </label>
+
+      <label>
+        {{ text().cats.form.foodBrand }}
+        <input
+          type="text"
+          name="foodBrand"
+          [ngModel]="foodBrand()"
+          (ngModelChange)="foodBrand.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().cats.form.litterBrand }}
+        <input
+          type="text"
+          name="litterBrand"
+          [ngModel]="litterBrand()"
+          (ngModelChange)="litterBrand.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().cats.form.personality }}
+        <textarea
+          name="personality"
+          rows="4"
+          [ngModel]="personality()"
+          (ngModelChange)="personality.set($event)"
+        ></textarea>
+      </label>
+
+      <label>
+        {{ text().cats.form.lastInternalDewormerName }}
+        <input
+          type="text"
+          name="lastInternalDewormerName"
+          [ngModel]="lastInternalDewormerName()"
+          (ngModelChange)="lastInternalDewormerName.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().cats.form.lastInternalDewormingDate }}
+        <input
+          type="date"
+          name="lastInternalDewormingDate"
+          [ngModel]="lastInternalDewormingDate()"
+          (ngModelChange)="lastInternalDewormingDate.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().cats.form.lastExternalDewormerName }}
+        <input
+          type="text"
+          name="lastExternalDewormerName"
+          [ngModel]="lastExternalDewormerName()"
+          (ngModelChange)="lastExternalDewormerName.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().cats.form.lastExternalDewormingDate }}
+        <input
+          type="date"
+          name="lastExternalDewormingDate"
+          [ngModel]="lastExternalDewormingDate()"
+          (ngModelChange)="lastExternalDewormingDate.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().cats.form.lastTripleFelineDate }}
+        <input
+          type="date"
+          name="lastTripleFelineDate"
+          [ngModel]="lastTripleFelineDate()"
+          (ngModelChange)="lastTripleFelineDate.set($event)"
+        />
+      </label>
+
+      <label>
+        {{ text().cats.form.lastRabiesDate }}
+        <input
+          type="date"
+          name="lastRabiesDate"
+          [ngModel]="lastRabiesDate()"
+          (ngModelChange)="lastRabiesDate.set($event)"
+        />
+      </label>
+
+      <div class="form-actions">
+        <button type="submit" [disabled]="submitting()">
+          {{ submitting() ? text().cats.create.submitting : text().cats.create.submit }}
+        </button>
+      </div>
+    </form>
+  }
+</section>

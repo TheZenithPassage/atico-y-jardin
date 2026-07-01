@@ -1,0 +1,19 @@
+.owner-create-page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.page-header {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.page-header h2,
+.page-header p {
+  margin-bottom: 0;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+}

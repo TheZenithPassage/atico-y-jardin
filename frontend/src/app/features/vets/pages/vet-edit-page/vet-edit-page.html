@@ -1,0 +1,55 @@
+<section class="vet-edit-page">
+  <header class="page-header">
+    <div>
+      <h2>{{ text().vets.edit.title }}</h2>
+      <p>{{ text().vets.edit.description }}</p>
+    </div>
+
+    <a routerLink="/vets" class="secondary-action">{{ text().vets.edit.backToVets }}</a>
+  </header>
+
+  @if (loading()) {
+    <p>{{ text().vets.edit.loading }}</p>
+  } @else {
+    @if (error()) {
+      <div class="error-message">
+        <p>{{ error() }}</p>
+      </div>
+    }
+
+    @if (vetLoaded()) {
+      <form class="vet-form" (ngSubmit)="submit()">
+        <label>
+          {{ text().vets.form.name }}
+          <input type="text" name="name" [ngModel]="name()" (ngModelChange)="name.set($event)" />
+        </label>
+
+        <label>
+          {{ text().vets.form.address }}
+          <input
+            type="text"
+            name="address"
+            [ngModel]="address()"
+            (ngModelChange)="address.set($event)"
+          />
+        </label>
+
+        <label>
+          {{ text().vets.form.phoneNumber }}
+          <input
+            type="text"
+            name="phoneNumber"
+            [ngModel]="phoneNumber()"
+            (ngModelChange)="phoneNumber.set($event)"
+          />
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" [disabled]="submitting()">
+            {{ submitting() ? text().vets.edit.submitting : text().vets.edit.submit }}
+          </button>
+        </div>
+      </form>
+    }
+  }
+</section>

@@ -1,0 +1,90 @@
+<section class="owner-create-page">
+  <header class="page-header">
+    <h2>{{ text().owners.create.title }}</h2>
+    <p>{{ text().owners.create.description }}</p>
+  </header>
+
+  <form class="owner-form" (ngSubmit)="submit()">
+    @if (error()) {
+      <div class="error-message">
+        <p>{{ error() }}</p>
+      </div>
+    }
+
+    <label>
+      {{ text().owners.form.fullName }}
+      <input
+        type="text"
+        name="fullName"
+        [ngModel]="fullName()"
+        (ngModelChange)="fullName.set($event)"
+      />
+    </label>
+
+    <label>
+      {{ text().owners.form.primaryPhone }}
+      <input
+        type="text"
+        name="primaryPhone"
+        [ngModel]="primaryPhone()"
+        (ngModelChange)="primaryPhone.set($event)"
+      />
+    </label>
+
+    <label>
+      {{ text().owners.form.address }}
+      <input
+        type="text"
+        name="address"
+        [ngModel]="address()"
+        (ngModelChange)="address.set($event)"
+      />
+    </label>
+
+    <label>
+      {{ text().owners.form.secondaryPhone }}
+      <input
+        type="text"
+        name="secondaryPhone"
+        [ngModel]="secondaryPhone()"
+        (ngModelChange)="secondaryPhone.set($event)"
+      />
+    </label>
+
+    <label>
+      {{ text().owners.form.secondaryPhoneName }}
+      <input
+        type="text"
+        name="secondaryPhoneName"
+        [ngModel]="secondaryPhoneName()"
+        (ngModelChange)="secondaryPhoneName.set($event)"
+      />
+    </label>
+
+    <label>
+      {{ text().owners.form.instagram }}
+      <input
+        type="text"
+        name="instagram"
+        [ngModel]="instagram()"
+        (ngModelChange)="instagram.set($event)"
+      />
+    </label>
+
+    <label>
+      {{ text().owners.form.facebook }}
+      <input
+        type="text"
+        name="facebook"
+        [ngModel]="facebook()"
+        (ngModelChange)="facebook.set($event)"
+      />
+    </label>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="submitting()">
+        {{ submitting() ? text().owners.create.submitting : text().owners.create.submit }}
+      </button>
+    </div>
+  </form>
+</section>
