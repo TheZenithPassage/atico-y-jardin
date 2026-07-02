@@ -1,16 +1,16 @@
 ---
-name: "catworld-implement-issue"
-description: "Orchestrate a CatWorld GitHub issue from clean local branch preparation through the existing Spec Kit specify, plan, tasks, analyze, implement, converge, validation, and final reporting workflow."
-compatibility: "Requires the CatWorld repository, GitHub issue context, and the repo-local Spec Kit skills under .agents/skills"
+name: "atico-y-jardin-implement-issue"
+description: "Orchestrate an Ático y Jardín GitHub issue from clean local branch preparation through Spec Kit specify, plan, tasks, analyze, implement, converge, validation, and final reporting."
+compatibility: "Requires the Ático y Jardín repository, GitHub issue context, and the repo-local Spec Kit skills under .agents/skills"
 metadata:
-  author: "catworld"
-  source: "issue-185"
+  author: "atico-y-jardin"
+  source: "issue-16"
 ---
 
-# CatWorld Implement Issue
+# Ático y Jardín Implement Issue
 
-Use this orchestration skill for a complete CatWorld issue implementation from
-one prompt. It coordinates existing Spec Kit skills; do not duplicate their
+Use this orchestration skill for a complete Ático y Jardín issue implementation
+from one prompt. It coordinates existing Spec Kit skills; do not duplicate their
 internal instructions. When a step says to run a Spec Kit skill, load and follow
 that skill's `SKILL.md`.
 
@@ -62,10 +62,10 @@ local branch before running Spec Kit:
 
 Examples:
 
-- `chore/185-streamline-spec-kit-workflow`
-- `feat/178-material-application-shell`
-- `fix/201-stay-date-validation`
-- `docs/210-update-operations-guide`
+- `chore/16-sync-spec-kit-workflow`
+- `feat/2-public-landing-shell`
+- `fix/8-demo-mobile-validation`
+- `docs/9-owner-demo-script`
 
 ## Workflow
 
@@ -85,13 +85,16 @@ Run this flow in order:
    - Stop when the selected approach materially changes from the approved issue
      or a prior approved plan.
    - Stop when a product behavior, security, persistence, shared-contract,
-     architecture, UX, or operational decision is unresolved.
+     architecture, UX, correctness-sensitive, or operational decision is
+     unresolved.
 6. Run `speckit-tasks`.
 7. Run `speckit-analyze`.
-8. If it reports inconsistencies, resolve only safe mechanical artifact inconsistencies before implementation,
-   such as broken references, inconsistent names, missing checklist status, or
-   task/spec wording drift that does not change approved scope, and rerun `speckit-analyze`. Stop when a
-   conflict cannot be mechanically reconciled without changing approved scope or if material inconsistencies remain.
+8. If it reports inconsistencies, resolve only safe mechanical artifact
+   inconsistencies before implementation, such as broken references, inconsistent
+   names, missing checklist status, or task/spec wording drift that does not
+   change approved scope, and rerun `speckit-analyze`. Stop when a conflict
+   cannot be mechanically reconciled without changing approved scope or if
+   material inconsistencies remain.
 9. Run `speckit-implement`.
 10. Run `speckit-converge`.
 11. If converge appends tasks, run `speckit-implement` again and then
@@ -101,13 +104,31 @@ Run this flow in order:
 13. Stop after at most two extra implement/converge cycles, even if more tasks
     remain, and report the remaining work.
 14. Run all validations required by the issue, plan, and tasks.
-15. Inspect local active-feature state before the final report:
+15. Before treating validation as complete:
+    - Rerun any validation command, test, review, browser-control session,
+      manual smoke check, or other evidence affected by relevant changes made
+      after that evidence was collected.
+    - If affected evidence cannot be rerun, report it as `not revalidated` or
+      `stale` instead of passed.
+    - Report each check with an explicit status: `passed`, `failed`, `skipped`,
+      `timed out`, `interrupted`, `partial`, `stale`, or `not revalidated`.
+    - Do not summarize timed-out, skipped, interrupted, partial, stale, failed,
+      or not-rerun validation as passed.
+16. Inspect changed files and surfaces before the final report:
+    - Use current working-tree information such as `git status --short` and
+      `git diff --name-only` on the active branch only.
+    - Compare changed paths with the issue, spec, plan, tasks, and source map.
+    - Flag any file or surface changed outside the plan/source map for review or
+      justification, especially late cleanup touching shared shell, global
+      styles, shared components, routing, contracts, migrations, authorization,
+      persistence, security, or other cross-cutting surfaces.
+17. Inspect local active-feature state before the final report:
     - If `AGENTS.md` changed only because of the `SPECKIT START` / `SPECKIT END`
       active plan pointer, restore that block to the `main` version.
     - Do not remove or rewrite permanent `AGENTS.md` instructions.
-16. Report final status, commands executed, validation results, risks, git
-    status and diff summary, suggested conventional commit title, and suggested
-    pull request description.
+18. Report final status, commands executed with explicit validation statuses,
+    scope-drift review results, risks, git status and diff summary, suggested
+    conventional commit title, and suggested pull request description.
 
 ## Stop Conditions
 
@@ -122,10 +143,14 @@ Stop and report the blocker when any of these occur:
   still-applicable prior approved plan.
 - Generated artifacts conflict in a way that is not safely mechanical to fix.
 - Validation fails and cannot be fixed without changing approved scope.
+- Required validation is stale after relevant late changes and cannot be rerun
+  or honestly reported within the approved scope.
+- Changed files or surfaces outside the issue/spec/plan/tasks source map cannot
+  be justified without changing approved scope.
 
 ## Completion Report
 
-Use the CatWorld `AGENTS.md` completion format:
+Use the Ático y Jardín `AGENTS.md` completion format:
 
 1. Concise summary of implemented behavior.
 2. Validation commands executed and their results.
@@ -133,8 +158,9 @@ Use the CatWorld `AGENTS.md` completion format:
 4. One suggested conventional commit title.
 5. One concise pull request description.
 
-Include the final branch name, `git status --short`, and a concise diff summary.
-Do not create the commit, push, pull request, issue update, or merge.
+Include the final branch name, `git status --short`, a concise diff summary,
+validation freshness status, and any scope-drift review findings. Do not create
+the commit, push, pull request, issue update, or merge.
 
 ## Done When
 
@@ -143,6 +169,10 @@ Do not create the commit, push, pull request, issue update, or merge.
   constitution.
 - Implementation and convergence have run within the cycle limit.
 - Required validations have run or any inability to run them is reported.
+- Validation results are fresh after the latest relevant change, or stale/not-rerun
+  checks are explicitly reported as not passed.
+- Changed files have been reviewed against the issue/spec/plan/tasks source map.
 - Final status includes commands, validation, risks, diff summary, suggested
   commit title, and suggested pull request description.
-- The `AGENTS.md` active plan pointer is restored before the final report when it was changed only as local workflow state.
+- The `AGENTS.md` active plan pointer is restored before the final report when
+  it was changed only as local workflow state.
