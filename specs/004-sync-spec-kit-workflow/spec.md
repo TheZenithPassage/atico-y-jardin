@@ -40,7 +40,7 @@
 
 ### Technical Requirements *(include for technical, architectural, migration, security, operational, refactoring, documentation, or enabling work)*
 
-- **TR-001**: The implementation MUST extract `C:\Users\moshe\Desktop\catworld.rar` into a temporary reference directory outside the Ático y Jardín working tree.
+- **TR-001**: The implementation MUST extract the provided `catworld.rar` reference archive into a temporary reference directory outside the Ático y Jardín repository working tree.
 - **TR-002**: The implementation MUST inspect CatWorld branches and identify the latest workflow/spec-kit hardening branch, expected to be related to issue #189 or `chore/189-harden-spec-kit-workflow-validation-coverage`.
 - **TR-003**: The implementation MUST compare the identified CatWorld workflow-hardening branch against CatWorld `main`, prioritizing `AGENTS.md`, `.agents/skills/*`, `.specify/templates/*`, `.specify/scripts/*`, `.specify/workflows/*`, `.specify/integrations/*`, `.specify/extensions/*`, `.specify/memory/constitution.md`, `specs/003-harden-spec-kit-validation/*`, and relevant `docs/*` only as supporting context.
 - **TR-004**: The implementation MUST port only reusable Spec Kit / SDD workflow improvements and adapt project names, examples, and instructions to Ático y Jardín.

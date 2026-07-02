@@ -13,7 +13,7 @@
 
 **Decision**: Use `origin/chore/189-harden-spec-kit-workflow-validation-coverage` from the extracted CatWorld reference as the workflow hardening reference.
 
-**Rationale**: `git branch --all` in `C:\Users\moshe\AppData\Local\Temp\catworld-reference-16-20260702-080352` showed the expected remote branch. The branch contains the relevant hardening commits:
+**Rationale**: `git branch --all` in the extracted temporary reference directory showed the expected remote branch. The branch contains the relevant hardening commits:
 
 - `e63ea7b` - harden Spec Kit validation workflow
 - `41158a4` - align Spec Kit evidence guidance artifacts

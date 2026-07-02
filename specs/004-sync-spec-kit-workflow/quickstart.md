@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Work from branch `chore/16-sync-spec-kit-workflow`, not `main`.
-- Keep `C:\Users\moshe\Desktop\catworld.rar` as read-only reference input.
+- Keep the provided `catworld.rar` reference archive as read-only reference input.
 - Extract the archive into a temporary directory outside this repository.
 
 ## Reference Inspection

@@ -18,7 +18,7 @@
 
 **Purpose**: Prepare safe reference inspection without modifying the Ático y Jardín working tree.
 
-- [x] T001 [TO1] Extract `C:\Users\moshe\Desktop\catworld.rar` into a temporary reference directory outside `C:\Users\moshe\Desktop\atico-y-jardin`
+- [x] T001 [TO1] Extract the provided `catworld.rar` reference archive into a temporary reference directory outside the Ático y Jardín repository working tree
 - [x] T002 [TO1] Run `git branch --all` in the extracted CatWorld reference directory and identify the latest workflow/spec-kit hardening branch in `specs/004-sync-spec-kit-workflow/research.md`
 
 ---
@@ -87,7 +87,7 @@
 
 - [x] T013 [TO2] Run changed-file searches for `CatWorld`, `cat`, `cats`, `stay`, `stays`, `boarding`, `veterinarian`, and `vet`; manually inspect all matches in changed files
 - [x] T014 [TO2] Manually inspect changed-file matches for `owner` and retain only property-owner or repository-ownership usage
-- [x] T015 [TO2] Run `git diff --check` from `C:\Users\moshe\Desktop\atico-y-jardin`
+- [x] T015 [TO2] Run `git diff --check` from the Ático y Jardín repository root
 - [x] T016 [TO1] Run available checks/build commands where applicable, or document why no automated runtime checks apply to workflow/docs-only changes
 - [x] T017 [TO1] Review `git status --short` and `git diff --stat` to confirm changed files stay within issue #16 scope
 
