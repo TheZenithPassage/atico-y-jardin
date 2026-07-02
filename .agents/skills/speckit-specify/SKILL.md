@@ -122,13 +122,14 @@ Given that feature description, do this:
        - Product behavior features describe user-visible behavior and may use user stories, functional requirements, user-facing acceptance scenarios, and technology-neutral success criteria when appropriate
        - Technical/enabling features describe objective technical outcomes and may use technical requirements, technical acceptance scenarios, and explicit technologies, commands, files, or APIs when they are part of the issue, repository evidence, constitution, or an approved technical decision
     4. For unclear aspects:
-       - Make informed guesses based on context and industry standards
-       - Only mark with [NEEDS CLARIFICATION: specific question] if:
-         - The choice significantly impacts feature scope, security, persistence, shared contracts, architecture, user experience, or operations
+       - Fill only safe, low-impact defaults supported by the prompt, repository evidence, the constitution, or an explicit human decision; document those defaults in Assumptions.
+       - Do not use assumptions, research, industry standards, common patterns, or self-approval to resolve material product, security, persistence, shared-contract, architecture, authorization, UX, operational, or correctness-sensitive decisions.
+       - Mark with [NEEDS CLARIFICATION: specific question] if:
+         - The choice significantly impacts feature scope, security, authorization, persistence, shared contracts, architecture, user experience, operations, or correctness-sensitive behavior
          - Multiple reasonable interpretations exist with different implications
-         - No reasonable default exists
+         - No safe low-impact default exists
        - **LIMIT: Maximum 3 [NEEDS CLARIFICATION] markers total**
-       - Prioritize clarifications by impact: scope > security/privacy > persistence/shared-contract/architecture > user experience > operations > local technical details
+       - Prioritize clarifications by impact: scope > security/privacy/authorization > persistence/shared-contract/architecture > user experience > operations/correctness-sensitive behavior > local technical details
     5. Fill scenarios and testing sections according to feature shape
        - Product behavior features need testable user-facing scenarios; if a product behavior feature has no testable scenario, ERROR "Product behavior feature lacks a testable acceptance scenario"
        - Technical/enabling features need objective technical acceptance scenarios or verifiable outcomes; do not invent a user journey solely to satisfy the template
@@ -309,23 +310,23 @@ Report completion to the user with:
 
 When creating this spec from a user prompt:
 
-1. **Make informed guesses**: Use context, industry standards, and common patterns to fill low-impact gaps only
-2. **Document assumptions**: Record safe minor defaults in the Assumptions section
+1. **Use only safe minor defaults**: Fill low-impact gaps only when supported by the prompt, repository evidence, the constitution, or an explicit human decision, and only when the default does not materially affect scope, security, persistence, shared contracts, architecture, authorization, user experience, operations, or other correctness-sensitive behavior.
+2. **Document low-impact defaults**: Record safe minor defaults in the Assumptions section.
 3. **Limit clarifications**: Maximum 3 [NEEDS CLARIFICATION] markers - use only for critical decisions that:
-   - Significantly impact feature scope, security, persistence, shared contracts, architecture, user experience, or operations
+   - Significantly impact feature scope, security, authorization, persistence, shared contracts, architecture, user experience, operations, or correctness-sensitive behavior
    - Have multiple reasonable interpretations with different implications
-   - Lack any reasonable default
-4. **Do not invent major decisions**: If more than 3 material blockers exist, keep the top 3 markers in-line, record the rest in Open Questions, and report the feature as blocked until a human decision is recorded.
-5. **Prioritize clarifications**: scope > security/privacy > persistence/shared-contract/architecture > user experience > operations > local technical details
+   - Lack any safe low-impact default
+4. **Do not invent material decisions**: Do not use assumptions, research, industry standards, common patterns, or self-approval to resolve material product, security, persistence, shared-contract, architecture, authorization, UX, operational, or correctness-sensitive decisions. If more than 3 material blockers exist, keep the top 3 markers in-line, record the rest in Open Questions, and report the feature as blocked until a human decision is recorded.
+5. **Prioritize clarifications**: scope > security/privacy/authorization > persistence/shared-contract/architecture > user experience > operations/correctness-sensitive behavior > local technical details
 6. **Think like a tester**: Every vague requirement should fail the "testable and unambiguous" checklist item
 7. **Describe the observable surface**: For visible UI and user-observable behavior, specify the rendered state or experience that proves the requirement. Internal state, helper calls, or service spies are not enough to define the requirement.
 8. **Use validation matrices proportionally**: Add a matrix when validation, conflicts, blocked actions, backend-rejected state, permissions, or state transitions are in scope. Keep it lightweight for small features and omit it with a clear N/A reason for backend-only, documentation-only, or unrelated technical work.
-9. **Common areas needing clarification** (only if no reasonable default exists):
+9. **Common areas needing clarification** (only if no safe low-impact default exists):
    - Feature scope and boundaries (include/exclude specific use cases)
    - User types and permissions (if multiple conflicting interpretations possible)
    - Security/compliance requirements (when legally/financially significant)
 
-**Examples of reasonable defaults** (don't ask about these):
+**Examples of safe low-impact defaults** (don't ask about these):
 
 - Data retention: Preserve existing repository behavior unless the issue or an approved decision explicitly changes it.
 - Performance targets: Use existing repository limits, issue requirements, or approved decisions. Do not invent throughput, latency, scale, or timing targets.

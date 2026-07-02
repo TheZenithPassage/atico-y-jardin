@@ -13,11 +13,11 @@ description: "Task list template for feature implementation"
 the feature specification or required by the constitution. Generate automated or
 non-automated evidence tasks when demanded by the specification, constitution,
 plan validation evidence section, semantic-equivalence review, validation
-matrix, or feature risk for visible behavior, reservation rules, inherited stay
-rules, persistence, migrations, security, shared contracts, accessibility,
-operational safety, or other correctness-sensitive behavior. Evidence may also
-be a focused review or manual visible smoke check when automation cannot fully
-prove the behavior.
+matrix, or feature risk for visible behavior, business rules, domain invariants,
+persistence, migrations, security, shared contracts, accessibility, operational
+safety, or other correctness-sensitive behavior. Evidence may also be a focused
+review or manual visible smoke check when automation cannot fully prove the
+behavior.
 
 **Organization**: Tasks are grouped by independently verifiable user journeys when natural, or by dependency-driven verifiable technical outcomes for technical/enabling work.
 
@@ -47,8 +47,17 @@ Before generating implementation tasks, inspect plan.md.
 - Do not generate implementation tasks that assume or select an architecture,
   framework, library, service, native capability, or custom design while the
   required approval is pending.
+- Generate only legitimate research, comparison, decision-documentation, or
+  approval-blocker tasks when those tasks are actually still needed.
+- If the plan already contains the completed assessment and only human approval
+  is missing, report the blocking condition instead of creating a task that an
+  implementation agent could falsely mark complete.
+- After explicit approval is recorded, implementation tasks may be generated or
+  regenerated and MUST follow the approved approach.
 - If a valid prior approved architectural decision is referenced and
   applicable, no duplicate approval task is needed.
+- Implementation tasks MUST NOT reopen the decision or silently substitute a
+  different approach.
 
 ## Validation Evidence Rules
 
@@ -94,7 +103,7 @@ technical outcomes can be implemented. Omit this phase if the feature has no
 shared foundational work.
 
 - [ ] T002 Add shared model, contract, route, fixture, or documentation prerequisite in [exact path]
-- [ ] T003 Add constitution- or plan-required validation task(s) for visible behavior, reservation rules, inherited stay rules, persistence, migrations, security, contracts, authorization, semantic equivalence, accessibility, or operational safety
+- [ ] T003 Add constitution- or plan-required validation task(s) for visible behavior, business rules, domain invariants, persistence, migrations, security, contracts, authorization, semantic equivalence, accessibility, or operational safety
 
 **Checkpoint**: Shared prerequisites complete - affected user story or
 technical outcome implementation can now begin

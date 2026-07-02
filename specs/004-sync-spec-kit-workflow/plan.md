@@ -68,6 +68,47 @@ Synchronize reusable Spec Kit / SDD workflow hardening from the supplied CatWorl
 
 **Human approval**: N/A for new architecture/technology assessment; no significant decision is introduced. The issue itself approves adapting reusable workflow improvements while preserving Ático y Jardín constraints.
 
+## Semantic Equivalence and Replacement Review
+
+**Review required**: No. This workflow/docs-only sync does not replace a UI
+primitive, shared component, interaction mechanism, presentation mechanism,
+data/contract mechanism, persistence mechanism, or behavior-preserving runtime
+mechanism with mismatch risk.
+
+**Old behavior/source of truth**: N/A for application runtime behavior. The
+source of truth for this feature is issue #16, the Ático y Jardín constitution,
+the current Ático y Jardín workflow files, and the CatWorld reference archive
+used only as inspection material.
+
+**New mechanism semantics**: N/A. No application component, framework,
+contract, routing, focus, validation, persistence, migration, authorization, or
+security mechanism is being replaced.
+
+**Mismatch risks**: N/A for application behavior. Workflow risk is limited to
+stale CatWorld coupling, contradictory guidance, incomplete validation-evidence
+coverage, or instructions that accidentally expand v0.1.1 scope.
+
+**Mitigation**: Keep edits targeted to workflow guidance, reusable templates,
+documentation, and active issue artifacts; reject CatWorld domain coupling; and
+review changed files against the feature source map.
+
+**Proof required**: Focused text review of changed workflow files,
+CatWorld-reference coupling search and classification, `git diff --check`, and
+changed-file/source-map review confirming no runtime application surfaces
+changed.
+
+## Validation Evidence Plan
+
+| Surface / Requirement | Responsible Layer | Evidence Type | Freshness / Manual Notes |
+|-----------------------|-------------------|---------------|--------------------------|
+| CatWorld reference archive and branch inspection | Reference workflow inspection | Research notes plus read-only review of the CatWorld workflow files and hardened validation artifact | Re-review if reference-derived wording changes |
+| Reusable workflow vs rejected CatWorld domain coupling | Workflow skill/template/docs Markdown | Focused text review comparing reusable hardening against rejected CatWorld domain terms and examples | Re-review after final Markdown edits |
+| Changed-file stale reference search | Active branch changed files | Search for `CatWorld`, `cat`, `cats`, `stay`, `stays`, `boarding`, `veterinarian`, `vet`, and manual `owner` classification | Rerun after the latest relevant edit |
+| v0.1.1 out-of-scope protection | Workflow and scope documentation | Text review confirming backend, database, Flyway, iCal, OTA integration, payments, real reservations, live availability, and admin redesign are not made mandatory | Re-review after final scope wording edits |
+| Representative issue #2 handoff walkthrough | Issue orchestration workflow | Manual walkthrough confirming spec, design-fit, diff-plan, validation, dependency, and scope-control expectations remain bounded | Repeat if orchestration guidance changes |
+| Changed-file/source-map review | Active branch metadata and feature plan | `git status --short`, `git diff --name-only`, and path review against the plan source map | Rerun after final edits |
+| Validation freshness and not-revalidated reporting | Implementation/orchestration guidance and final report | Text review plus final validation status reporting | Do not report stale, skipped, interrupted, timed-out, partial, failed, or not-rerun checks as passed |
+
 ## Project Structure
 
 ### Documentation (this feature)

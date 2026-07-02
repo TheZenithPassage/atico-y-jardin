@@ -20,6 +20,10 @@
 - [x] Success criteria avoid unapproved implementation detail
 - [x] Acceptance scenarios appropriate to the feature shape are defined
 - [x] Edge cases are identified
+- [x] Observable UI or user-observable behavior changes define visible states, messages, interaction outcomes, navigation/focus behavior, i18n-visible text, responsive/mobile behavior, and role-dependent visibility where applicable - N/A: this workflow/docs-only feature does not change application UI or user-observable runtime behavior
+- [x] Validation-sensitive behavior includes a proportional input/state matrix, or is marked N/A with a reason - N/A: this feature changes validation workflow guidance, not an application input/state validation surface
+- [x] Correctness-sensitive technical behavior identifies the responsible evidence layer - Complete: `plan.md` records the validation evidence plan for workflow/reference review, stale-reference searches, v0.1.1 scope protection, issue handoff walkthrough, changed-file/source-map review, and validation freshness reporting
+- [x] Unresolved material decisions remain blockers instead of assumptions or guesses
 - [x] Scope is clearly bounded
 - [x] Dependencies and assumptions identified
 

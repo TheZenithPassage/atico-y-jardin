@@ -24,11 +24,11 @@
 
 **Project Type**: [Ático y Jardín full-stack web application with inherited backend/frontend baseline; refine only if current repository evidence requires it]
 
-**Performance Goals**: [Use N/A if no confirmed requirement. Record only measurable targets supported by the specification, current repository, or explicit human decision.]
+**Performance Goals**: [Use N/A if no confirmed requirement. Record only measurable targets supported by the specification, current repository, or explicit human decision. Use NEEDS CLARIFICATION when unresolved performance requirements materially affect design. Never invent throughput, data-volume, screen-count, user-count, or latency targets.]
 
-**Constraints**: [Use N/A if no confirmed constraint. Record only constraints supported by the specification, current repository, or explicit human decision.]
+**Constraints**: [Use N/A if no confirmed constraint. Record only constraints supported by the specification, current repository, or explicit human decision. Use NEEDS CLARIFICATION when unresolved constraints materially affect design. Never invent throughput, data-volume, screen-count, user-count, or latency targets.]
 
-**Scale/Scope**: [Use N/A if no confirmed scale requirement. Record only measurable scope or scale supported by the specification, current repository, or explicit human decision.]
+**Scale/Scope**: [Use N/A if no confirmed scale requirement. Record only measurable scope or scale supported by the specification, current repository, or explicit human decision. Use NEEDS CLARIFICATION when unresolved scale materially affects design. Never invent throughput, data-volume, screen-count, user-count, or latency targets.]
 
 ## Constitution Check
 
@@ -49,10 +49,10 @@
 - **Schema evolution**: If schema changes are needed, are Flyway migrations and
   proportional migration validation planned, with Hibernate auto-update
   excluded from real schema changes?
-- **Protected reservation model**: If reservations, booking requests, inherited
-  stays, or availability are affected, does the plan preserve unit overlap
-  protection, check-out-after-check-in, cancelled-does-not-block, and
-  request-is-not-confirmed-reservation rules?
+- **Protected reservation model**: If reservations, booking requests,
+  availability, or inherited occupancy behavior are affected, does the plan
+  preserve unit overlap protection, check-out-after-check-in,
+  cancelled-does-not-block, and request-is-not-confirmed-reservation rules?
 - **Specification and planning discipline**: Are observable behavior, scope,
   edge cases, exclusions, planned-vs-implemented status, and major decisions
   resolved before implementation, with observable-state and validation-matrix
@@ -96,7 +96,13 @@
 **Human approval**: [pending/approved; keep pending unless explicit human
 approval or a valid prior approved decision is referenced. Explicit human
 approval of the completed feature plan counts as approval of the selected
-approach.]
+approach. Approval may be referenced from the constitution or another
+explicitly approved and still-applicable architectural decision record; identify
+the source and explain its applicability. If an existing approved decision fully
+governs the choice, such as normal Flyway migration work following the
+constitution, reference it rather than reopen the decision unnecessarily. An
+agent cannot infer approval or approve its own recommendation. A material
+change to the selected approach invalidates prior approval.]
 
 ## Semantic Equivalence and Replacement Review
 
