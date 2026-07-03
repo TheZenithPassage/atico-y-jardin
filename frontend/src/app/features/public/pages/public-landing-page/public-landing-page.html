@@ -5,15 +5,30 @@
       <h2 id="landing-title">{{ text().publicLanding.hero.title }}</h2>
       <p class="hero-subtitle">{{ text().publicLanding.hero.subtitle }}</p>
       <div class="hero-actions">
-        <a href="#contact" class="primary-action">{{ text().publicLanding.hero.primaryCta }}</a>
-        <a href="#atico" class="secondary-action">{{ text().publicLanding.hero.secondaryCta }}</a>
+        <a [href]="text().publicLanding.hero.contactCta.href" class="primary-action">
+          {{ text().publicLanding.hero.contactCta.label }}
+        </a>
       </div>
     </div>
 
-    <figure class="hero-visual">
-      <img src="/landing/shared/hero-placeholder.svg" [alt]="text().publicLanding.hero.imageAlt" />
-      <figcaption>{{ text().publicLanding.intro.notes[0] }}</figcaption>
-    </figure>
+    <div class="hero-panels" [attr.aria-label]="text().publicLanding.hero.panelsLabel">
+      @for (panel of text().publicLanding.hero.panels; track panel.apartmentId) {
+        <article
+          class="hero-panel"
+          [class.hero-panel--atico]="panel.apartmentId === 'atico'"
+          [class.hero-panel--jardin]="panel.apartmentId === 'jardin'"
+          [attr.aria-labelledby]="'hero-' + panel.apartmentId + '-title'"
+        >
+          <img [src]="panel.image.src" [alt]="panel.image.alt" />
+          <div class="hero-panel-copy">
+            <p class="eyebrow">{{ panel.eyebrow }}</p>
+            <h3 [id]="'hero-' + panel.apartmentId + '-title'">{{ panel.headline }}</h3>
+            <p>{{ panel.summary }}</p>
+            <a [href]="panel.ctaHref" class="secondary-action">{{ panel.ctaLabel }}</a>
+          </div>
+        </article>
+      }
+    </div>
   </section>
 
   <section class="brand-intro" aria-labelledby="brand-intro-title">

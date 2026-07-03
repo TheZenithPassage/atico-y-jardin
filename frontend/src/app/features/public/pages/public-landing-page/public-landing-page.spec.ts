@@ -61,6 +61,54 @@ describe('PublicLandingPage', () => {
     expect(compiled.querySelector('#jardin')?.textContent).toContain('Jardín');
   });
 
+  it('renders split hero panels with local apartment image sources', () => {
+    const fixture = TestBed.createComponent(PublicLandingPage);
+
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const panelsRegion = compiled.querySelector<HTMLElement>('.hero-panels');
+    const panels = Array.from(compiled.querySelectorAll<HTMLElement>('.hero-panel'));
+    const panelText = panels.map((panel) => panel.textContent ?? '').join(' ');
+    const imageSources = panels.map(
+      (panel) => panel.querySelector<HTMLImageElement>('img')?.getAttribute('src') ?? '',
+    );
+
+    expect(panelsRegion?.getAttribute('aria-label')).toBe('Apartamentos Ático y Jardín');
+    expect(panels).toHaveLength(2);
+    expect(panelText).toContain('Ático');
+    expect(panelText).toContain('Jardín');
+    expect(imageSources).toEqual([
+      '/landing/atico/placeholder-primary.svg',
+      '/landing/jardin/placeholder-primary.svg',
+    ]);
+  });
+
+  it('wires hero CTAs to public anchors without fake booking wording', () => {
+    const fixture = TestBed.createComponent(PublicLandingPage);
+
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const hero = compiled.querySelector<HTMLElement>('.hero');
+    const heroLinks = Array.from(hero?.querySelectorAll<HTMLAnchorElement>('a') ?? []).map(
+      (link) => ({
+        href: link.getAttribute('href'),
+        text: link.textContent?.trim(),
+      }),
+    );
+    const heroText = hero?.textContent ?? '';
+
+    expect(heroLinks).toEqual([
+      { href: '#contact', text: 'Consultar disponibilidad' },
+      { href: '#atico', text: 'Ver Ático' },
+      { href: '#jardin', text: 'Ver Jardín' },
+    ]);
+    expect(heroText).not.toMatch(
+      /reserva inmediata|reserva automática|pago|payment|book now|instant booking|confirmación automática|tiempo real|iCal|OTA/i,
+    );
+  });
+
   it('renders public navbar anchor targets for apartments, location, and contact', () => {
     const fixture = TestBed.createComponent(PublicLandingPage);
 
