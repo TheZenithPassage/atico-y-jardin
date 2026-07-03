@@ -127,6 +127,7 @@ Active transition specs:
 - [specs/001-friday-demo-landing](specs/001-friday-demo-landing)
 - [specs/002-private-reservation-management](specs/002-private-reservation-management)
 - [specs/003-public-booking-request](specs/003-public-booking-request)
+- [specs/004-sync-spec-kit-workflow](specs/004-sync-spec-kit-workflow)
 
 Supporting docs:
 
