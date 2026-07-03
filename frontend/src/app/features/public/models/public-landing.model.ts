@@ -13,6 +13,21 @@ export interface ApartmentGalleryImage {
   isPrimary?: boolean;
 }
 
+export interface SplitHeroPanel {
+  apartmentId: ApartmentId;
+  eyebrow: string;
+  headline: string;
+  summary: string;
+  image: ApartmentGalleryImage;
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+export interface HeroAction {
+  label: string;
+  href: string;
+}
+
 export interface LocationInfo {
   title: string;
   description: string;

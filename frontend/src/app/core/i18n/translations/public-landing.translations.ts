@@ -3,6 +3,8 @@ import {
   ApartmentPresentation,
   BookingInquiryDraftLabels,
   ContactInfo,
+  HeroAction,
+  SplitHeroPanel,
 } from '../../../features/public/models/public-landing.model';
 
 export interface PublicLandingTranslations {
@@ -17,9 +19,9 @@ export interface PublicLandingTranslations {
     eyebrow: string;
     title: string;
     subtitle: string;
-    primaryCta: string;
-    secondaryCta: string;
-    imageAlt: string;
+    contactCta: HeroAction;
+    panelsLabel: string;
+    panels: SplitHeroPanel[];
   };
   intro: {
     title: string;
@@ -64,13 +66,40 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       privateAccess: 'Acceso privado',
     },
     hero: {
-      eyebrow: 'Dos apartamentos turísticos, una presentación clara',
+      eyebrow: 'Dos apartamentos',
       title: 'Ático y Jardín',
-      subtitle:
-        'Una web pública para presentar cada apartamento por separado y abrir una vía honesta de consulta de disponibilidad.',
-      primaryCta: 'Consultar disponibilidad',
-      secondaryCta: 'Ver apartamentos',
-      imageAlt: 'Imagen de portada para la presentación pública de Ático y Jardín',
+      subtitle: 'Dos apartamentos con consulta directa para revisar fechas.',
+      contactCta: {
+        label: 'Consultar disponibilidad',
+        href: '#contact',
+      },
+      panelsLabel: 'Apartamentos Ático y Jardín',
+      panels: [
+        {
+          apartmentId: 'atico',
+          eyebrow: 'Ático',
+          headline: 'Luz y calma en altura',
+          summary: 'Ático luminoso para empezar.',
+          image: {
+            src: '/landing/atico/placeholder-primary.svg',
+            alt: 'Imagen de referencia del Ático',
+          },
+          ctaLabel: 'Ver Ático',
+          ctaHref: '#atico',
+        },
+        {
+          apartmentId: 'jardin',
+          eyebrow: 'Jardín',
+          headline: 'Serenidad con aire exterior',
+          summary: 'Jardín sereno para imaginar la estancia.',
+          image: {
+            src: '/landing/jardin/placeholder-primary.svg',
+            alt: 'Imagen de referencia del Jardín',
+          },
+          ctaLabel: 'Ver Jardín',
+          ctaHref: '#jardin',
+        },
+      ],
     },
     intro: {
       title: 'Una marca, dos espacios diferenciados',
@@ -230,13 +259,40 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       privateAccess: 'Private access',
     },
     hero: {
-      eyebrow: 'Two tourist apartments, one clear presentation',
+      eyebrow: 'Two apartments',
       title: 'Ático y Jardín',
-      subtitle:
-        'A public website to present each apartment separately and offer an honest availability inquiry path.',
-      primaryCta: 'Ask about availability',
-      secondaryCta: 'View apartments',
-      imageAlt: 'Cover image for the Ático y Jardín public presentation',
+      subtitle: 'Two apartments with direct contact to review dates.',
+      contactCta: {
+        label: 'Ask about availability',
+        href: '#contact',
+      },
+      panelsLabel: 'Ático and Jardín apartments',
+      panels: [
+        {
+          apartmentId: 'atico',
+          eyebrow: 'Ático',
+          headline: 'Upper light and calm',
+          summary: 'A bright upper-apartment start.',
+          image: {
+            src: '/landing/atico/placeholder-primary.svg',
+            alt: 'Reference image for Ático',
+          },
+          ctaLabel: 'View Ático',
+          ctaHref: '#atico',
+        },
+        {
+          apartmentId: 'jardin',
+          eyebrow: 'Jardín',
+          headline: 'Calm with outdoor ease',
+          summary: 'A calm first look at Jardín.',
+          image: {
+            src: '/landing/jardin/placeholder-primary.svg',
+            alt: 'Reference image for Jardín',
+          },
+          ctaLabel: 'View Jardín',
+          ctaHref: '#jardin',
+        },
+      ],
     },
     intro: {
       title: 'One brand, two distinct spaces',
