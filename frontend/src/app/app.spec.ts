@@ -29,7 +29,7 @@ describe('App', () => {
     expect(compiled.querySelector('h1')?.textContent).toContain('Ático y Jardín');
   });
 
-  it('shows private access navigation to unauthenticated visitors', () => {
+  it('shows public section navigation and private access to unauthenticated visitors', () => {
     const fixture = TestBed.createComponent(App);
 
     fixture.detectChanges();
@@ -37,9 +37,23 @@ describe('App', () => {
     const links = Array.from(
       fixture.nativeElement.querySelectorAll('nav a'),
     ) as HTMLAnchorElement[];
+    const linkTargets = links.map((link) => ({
+      href: link.getAttribute('href'),
+      text: link.textContent?.trim(),
+    }));
+
+    expect(linkTargets).toEqual([
+      { href: '/#atico', text: 'Ático' },
+      { href: '/#jardin', text: 'Jardín' },
+      { href: '/#location', text: 'Ubicación' },
+      { href: '/#contact', text: 'Contacto' },
+      { href: '/login', text: 'Acceso privado' },
+    ]);
+
     const privateAccessLink = links.find((link) => link.getAttribute('href') === '/login');
 
     expect(privateAccessLink?.textContent).toContain('Acceso privado');
+    expect(privateAccessLink?.classList.contains('private-access-link')).toBe(true);
   });
 
   it('shows account management navigation to ADMIN', () => {

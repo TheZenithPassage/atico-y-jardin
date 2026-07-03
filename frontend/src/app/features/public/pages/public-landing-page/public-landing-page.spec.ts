@@ -60,4 +60,17 @@ describe('PublicLandingPage', () => {
     expect(compiled.querySelector('#atico')?.textContent).toContain('Ático');
     expect(compiled.querySelector('#jardin')?.textContent).toContain('Jardín');
   });
+
+  it('renders public navbar anchor targets for apartments, location, and contact', () => {
+    const fixture = TestBed.createComponent(PublicLandingPage);
+
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    expect(compiled.querySelector('#atico')?.textContent).toContain('Ático');
+    expect(compiled.querySelector('#jardin')?.textContent).toContain('Jardín');
+    expect(compiled.querySelector('#location')?.textContent).toContain('Ubicación');
+    expect(compiled.querySelector('#contact')?.textContent).toContain('Contacto');
+  });
 });
