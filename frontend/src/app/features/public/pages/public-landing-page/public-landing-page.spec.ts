@@ -110,15 +110,51 @@ describe('PublicLandingPage', () => {
     const imageSources = panels.map(
       (panel) => panel.querySelector<HTMLImageElement>('img')?.getAttribute('src') ?? '',
     );
+    const imageAltText = panels.map(
+      (panel) => panel.querySelector<HTMLImageElement>('img')?.getAttribute('alt') ?? '',
+    );
 
     expect(panelsRegion?.getAttribute('aria-label')).toBe('Apartamentos Ático y Jardín');
     expect(panels).toHaveLength(2);
     expect(panelText).toContain('Ático');
     expect(panelText).toContain('Jardín');
     expect(imageSources).toEqual([
-      '/landing/atico/placeholder-primary.svg',
-      '/landing/jardin/placeholder-primary.svg',
+      '/landing/atico/atico-primary.png',
+      '/landing/jardin/jardin-primary.png',
     ]);
+    expect(imageAltText).toEqual([
+      'Vista desde el Ático hacia el mar',
+      'Vista de Jardín con zona verde y piscina',
+    ]);
+  });
+
+  it('renders one real image per apartment section without placeholder gallery grids', () => {
+    const fixture = TestBed.createComponent(PublicLandingPage);
+
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const aticoSection = compiled.querySelector<HTMLElement>('#atico');
+    const jardinSection = compiled.querySelector<HTMLElement>('#jardin');
+    const aticoImages = Array.from(
+      aticoSection?.querySelectorAll<HTMLImageElement>('.gallery img') ?? [],
+    );
+    const jardinImages = Array.from(
+      jardinSection?.querySelectorAll<HTMLImageElement>('.gallery img') ?? [],
+    );
+    const landingImageSources = Array.from(compiled.querySelectorAll<HTMLImageElement>('img'))
+      .map((image) => image.getAttribute('src') ?? '')
+      .join(' ');
+
+    expect(aticoImages.map((image) => image.getAttribute('src'))).toEqual([
+      '/landing/atico/atico-primary.png',
+    ]);
+    expect(jardinImages.map((image) => image.getAttribute('src'))).toEqual([
+      '/landing/jardin/jardin-primary.png',
+    ]);
+    expect(aticoSection?.querySelector('.gallery-grid')).toBeNull();
+    expect(jardinSection?.querySelector('.gallery-grid')).toBeNull();
+    expect(landingImageSources).not.toMatch(/placeholder-.*\.svg/i);
   });
 
   it('wires hero CTAs to public anchors without fake booking wording', () => {

@@ -74,7 +74,7 @@
             <figcaption>{{ apartment.gallery[0].caption }}</figcaption>
           </figure>
 
-          @if (apartment.id !== 'atico') {
+          @if (apartment.gallery.length > 1) {
             <div class="gallery-grid">
               @for (image of apartment.gallery; track image.src; let first = $first) {
                 @if (!first) {

@@ -82,8 +82,8 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
           headline: 'Luz y calma en altura',
           summary: 'Ático luminoso para empezar.',
           image: {
-            src: '/landing/atico/placeholder-primary.svg',
-            alt: 'Imagen de referencia del Ático',
+            src: '/landing/atico/atico-primary.png',
+            alt: 'Vista desde el Ático hacia el mar',
           },
           ctaLabel: 'Ver Ático',
           ctaHref: '#atico',
@@ -94,8 +94,8 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
           headline: 'Serenidad con aire exterior',
           summary: 'Jardín sereno para imaginar la estancia.',
           image: {
-            src: '/landing/jardin/placeholder-primary.svg',
-            alt: 'Imagen de referencia del Jardín',
+            src: '/landing/jardin/jardin-primary.png',
+            alt: 'Vista de Jardín con zona verde y piscina',
           },
           ctaLabel: 'Ver Jardín',
           ctaHref: '#jardin',
@@ -144,20 +144,10 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
         ],
         gallery: [
           {
-            src: '/landing/atico/placeholder-primary.svg',
-            alt: 'Imagen de referencia del Ático',
-            caption: 'Imagen principal del Ático',
+            src: '/landing/atico/atico-primary.png',
+            alt: 'Vista desde el Ático hacia el mar',
+            caption: 'Vista principal del Ático',
             isPrimary: true,
-          },
-          {
-            src: '/landing/atico/placeholder-detail-1.svg',
-            alt: 'Imagen adicional de referencia del Ático',
-            caption: 'Detalle del Ático',
-          },
-          {
-            src: '/landing/atico/placeholder-detail-2.svg',
-            alt: 'Segunda imagen adicional de referencia del Ático',
-            caption: 'Galería del Ático',
           },
         ],
         location: {
@@ -187,20 +177,10 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
         ],
         gallery: [
           {
-            src: '/landing/jardin/placeholder-primary.svg',
-            alt: 'Imagen de referencia del Jardín',
-            caption: 'Imagen principal del Jardín',
+            src: '/landing/jardin/jardin-primary.png',
+            alt: 'Vista de Jardín con zona verde y piscina',
+            caption: 'Vista principal de Jardín',
             isPrimary: true,
-          },
-          {
-            src: '/landing/jardin/placeholder-detail-1.svg',
-            alt: 'Imagen adicional de referencia del Jardín',
-            caption: 'Detalle del Jardín',
-          },
-          {
-            src: '/landing/jardin/placeholder-detail-2.svg',
-            alt: 'Segunda imagen adicional de referencia del Jardín',
-            caption: 'Galería del Jardín',
           },
         ],
         location: {
@@ -276,8 +256,8 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
           headline: 'Upper light and calm',
           summary: 'A bright upper-apartment start.',
           image: {
-            src: '/landing/atico/placeholder-primary.svg',
-            alt: 'Reference image for Ático',
+            src: '/landing/atico/atico-primary.png',
+            alt: 'View from Ático toward the sea',
           },
           ctaLabel: 'View Ático',
           ctaHref: '#atico',
@@ -288,8 +268,8 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
           headline: 'Calm with outdoor ease',
           summary: 'A calm first look at Jardín.',
           image: {
-            src: '/landing/jardin/placeholder-primary.svg',
-            alt: 'Reference image for Jardín',
+            src: '/landing/jardin/jardin-primary.png',
+            alt: 'View of Jardín with green area and pool',
           },
           ctaLabel: 'View Jardín',
           ctaHref: '#jardin',
@@ -338,20 +318,10 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
         ],
         gallery: [
           {
-            src: '/landing/atico/placeholder-primary.svg',
-            alt: 'Reference image for Ático',
-            caption: 'Main image for Ático',
+            src: '/landing/atico/atico-primary.png',
+            alt: 'View from Ático toward the sea',
+            caption: 'Main view of Ático',
             isPrimary: true,
-          },
-          {
-            src: '/landing/atico/placeholder-detail-1.svg',
-            alt: 'Additional reference image for Ático',
-            caption: 'Ático detail',
-          },
-          {
-            src: '/landing/atico/placeholder-detail-2.svg',
-            alt: 'Second additional reference image for Ático',
-            caption: 'Ático gallery',
           },
         ],
         location: {
@@ -381,20 +351,10 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
         ],
         gallery: [
           {
-            src: '/landing/jardin/placeholder-primary.svg',
-            alt: 'Reference image for Jardín',
-            caption: 'Main image for Jardín',
+            src: '/landing/jardin/jardin-primary.png',
+            alt: 'View of Jardín with green area and pool',
+            caption: 'Main view of Jardín',
             isPrimary: true,
-          },
-          {
-            src: '/landing/jardin/placeholder-detail-1.svg',
-            alt: 'Additional reference image for Jardín',
-            caption: 'Jardín detail',
-          },
-          {
-            src: '/landing/jardin/placeholder-detail-2.svg',
-            alt: 'Second additional reference image for Jardín',
-            caption: 'Jardín gallery',
           },
         ],
         location: {
