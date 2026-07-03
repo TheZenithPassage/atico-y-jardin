@@ -61,6 +61,43 @@ describe('PublicLandingPage', () => {
     expect(compiled.querySelector('#jardin')?.textContent).toContain('Jardín');
   });
 
+  it('presents Ático as a concise neutral information section with highlights', () => {
+    const fixture = TestBed.createComponent(PublicLandingPage);
+
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const aticoSection = compiled.querySelector<HTMLElement>('#atico');
+    const infoText =
+      aticoSection?.querySelector<HTMLElement>('.detail-group--featured')?.textContent ?? '';
+    const highlightsText =
+      aticoSection?.querySelector<HTMLElement>('.detail-group--atico-highlights')?.textContent ??
+      '';
+    const aticoInfoText = `${infoText} ${highlightsText}`;
+    const highlights = Array.from(
+      aticoSection?.querySelectorAll<HTMLLIElement>('.amenity-list li') ?? [],
+    ).map((item) => item.textContent?.trim());
+    const galleryImages = aticoSection?.querySelectorAll<HTMLImageElement>('.gallery img') ?? [];
+
+    expect(aticoSection?.classList.contains('apartment-section--atico')).toBe(true);
+    expect(aticoSection?.getAttribute('data-apartment-id')).toBe('atico');
+    expect(aticoInfoText).toContain('Un espacio luminoso pensado para estancias cómodas');
+    expect(aticoInfoText).toContain('Más información disponible bajo consulta');
+    expect(aticoInfoText).toContain('Puntos destacados');
+    expect(highlights).toEqual([
+      'Un espacio luminoso pensado para estancias cómodas',
+      'Lectura rápida para orientar la consulta',
+      'Más detalles disponibles por contacto directo',
+    ]);
+    expect(galleryImages).toHaveLength(1);
+    expect(aticoInfoText).not.toMatch(
+      /\b\d+\s*(personas|hu[eé]spedes|dormitorios|habitaciones|baños|banos)\b/i,
+    );
+    expect(aticoInfoText).not.toMatch(
+      /precio|€|reserva inmediata|reserva automática|pago|iCal|OTA|confirmación automática/i,
+    );
+  });
+
   it('renders split hero panels with local apartment image sources', () => {
     const fixture = TestBed.createComponent(PublicLandingPage);
 
@@ -73,15 +110,51 @@ describe('PublicLandingPage', () => {
     const imageSources = panels.map(
       (panel) => panel.querySelector<HTMLImageElement>('img')?.getAttribute('src') ?? '',
     );
+    const imageAltText = panels.map(
+      (panel) => panel.querySelector<HTMLImageElement>('img')?.getAttribute('alt') ?? '',
+    );
 
     expect(panelsRegion?.getAttribute('aria-label')).toBe('Apartamentos Ático y Jardín');
     expect(panels).toHaveLength(2);
     expect(panelText).toContain('Ático');
     expect(panelText).toContain('Jardín');
     expect(imageSources).toEqual([
-      '/landing/atico/placeholder-primary.svg',
-      '/landing/jardin/placeholder-primary.svg',
+      '/landing/atico/atico-primary.png',
+      '/landing/jardin/jardin-primary.png',
     ]);
+    expect(imageAltText).toEqual([
+      'Vista desde el Ático hacia el mar',
+      'Vista de Jardín con zona verde y piscina',
+    ]);
+  });
+
+  it('renders one real image per apartment section without placeholder gallery grids', () => {
+    const fixture = TestBed.createComponent(PublicLandingPage);
+
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const aticoSection = compiled.querySelector<HTMLElement>('#atico');
+    const jardinSection = compiled.querySelector<HTMLElement>('#jardin');
+    const aticoImages = Array.from(
+      aticoSection?.querySelectorAll<HTMLImageElement>('.gallery img') ?? [],
+    );
+    const jardinImages = Array.from(
+      jardinSection?.querySelectorAll<HTMLImageElement>('.gallery img') ?? [],
+    );
+    const landingImageSources = Array.from(compiled.querySelectorAll<HTMLImageElement>('img'))
+      .map((image) => image.getAttribute('src') ?? '')
+      .join(' ');
+
+    expect(aticoImages.map((image) => image.getAttribute('src'))).toEqual([
+      '/landing/atico/atico-primary.png',
+    ]);
+    expect(jardinImages.map((image) => image.getAttribute('src'))).toEqual([
+      '/landing/jardin/jardin-primary.png',
+    ]);
+    expect(aticoSection?.querySelector('.gallery-grid')).toBeNull();
+    expect(jardinSection?.querySelector('.gallery-grid')).toBeNull();
+    expect(landingImageSources).not.toMatch(/placeholder-.*\.svg/i);
   });
 
   it('wires hero CTAs to public anchors without fake booking wording', () => {
@@ -107,6 +180,20 @@ describe('PublicLandingPage', () => {
     expect(heroText).not.toMatch(
       /reserva inmediata|reserva automática|pago|payment|book now|instant booking|confirmación automática|tiempo real|iCal|OTA/i,
     );
+  });
+
+  it('keeps the Ático hero CTA aligned with the Ático section anchor', () => {
+    const fixture = TestBed.createComponent(PublicLandingPage);
+
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const aticoSection = compiled.querySelector<HTMLElement>('#atico');
+    const heroLinks = Array.from(compiled.querySelectorAll<HTMLAnchorElement>('.hero-panel a'));
+    const aticoHeroLink = heroLinks.find((link) => link.textContent?.trim() === 'Ver Ático');
+
+    expect(aticoSection?.id).toBe('atico');
+    expect(aticoHeroLink?.getAttribute('href')).toBe('#atico');
   });
 
   it('renders public navbar anchor targets for apartments, location, and contact', () => {

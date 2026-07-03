@@ -33,6 +33,7 @@ export interface PublicLandingTranslations {
     gallery: string;
     information: string;
     amenities: string;
+    highlights: string;
     location: string;
     inquiry: string;
   };
@@ -81,8 +82,8 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
           headline: 'Luz y calma en altura',
           summary: 'Ático luminoso para empezar.',
           image: {
-            src: '/landing/atico/placeholder-primary.svg',
-            alt: 'Imagen de referencia del Ático',
+            src: '/landing/atico/atico-primary.png',
+            alt: 'Vista desde el Ático hacia el mar',
           },
           ctaLabel: 'Ver Ático',
           ctaHref: '#atico',
@@ -93,8 +94,8 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
           headline: 'Serenidad con aire exterior',
           summary: 'Jardín sereno para imaginar la estancia.',
           image: {
-            src: '/landing/jardin/placeholder-primary.svg',
-            alt: 'Imagen de referencia del Jardín',
+            src: '/landing/jardin/jardin-primary.png',
+            alt: 'Vista de Jardín con zona verde y piscina',
           },
           ctaLabel: 'Ver Jardín',
           ctaHref: '#jardin',
@@ -115,6 +116,7 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       gallery: 'Galería',
       information: 'Información',
       amenities: 'Servicios',
+      highlights: 'Puntos destacados',
       location: 'Ubicación',
       inquiry: 'Consulta',
     },
@@ -127,35 +129,25 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       {
         id: 'atico',
         displayName: 'Ático',
-        headline: 'Ático, una estancia independiente dentro de Ático y Jardín',
+        headline: 'Ático, un espacio luminoso dentro de Ático y Jardín',
         summary:
-          'Un apartamento presentado con galería propia, información separada y consulta directa.',
+          'Un espacio luminoso pensado para estancias cómodas, con más información bajo consulta.',
         description:
-          'El Ático se muestra como una propuesta independiente para revisar detalles, resolver dudas y avanzar solo cuando la disponibilidad se confirme por contacto directo.',
-        capacityLabel: 'Consultar capacidad',
-        bedroomsLabel: 'Consultar distribución',
-        bathroomsLabel: 'Consultar baños',
+          'El Ático se presenta con una lectura breve para imaginar el ambiente, resolver dudas y pedir los detalles pendientes por contacto directo.',
+        capacityLabel: 'Más información disponible bajo consulta',
+        bedroomsLabel: 'Distribución disponible bajo consulta',
+        bathroomsLabel: 'Detalles disponibles bajo consulta',
         amenities: [
-          { label: 'Galería y ficha propias' },
-          { label: 'Consulta directa antes de reservar' },
-          { label: 'Detalles finales compartidos antes de confirmar' },
+          { label: 'Un espacio luminoso pensado para estancias cómodas' },
+          { label: 'Lectura rápida para orientar la consulta' },
+          { label: 'Más detalles disponibles por contacto directo' },
         ],
         gallery: [
           {
-            src: '/landing/atico/placeholder-primary.svg',
-            alt: 'Imagen de referencia del Ático',
-            caption: 'Imagen principal del Ático',
+            src: '/landing/atico/atico-primary.png',
+            alt: 'Vista desde el Ático hacia el mar',
+            caption: 'Vista principal del Ático',
             isPrimary: true,
-          },
-          {
-            src: '/landing/atico/placeholder-detail-1.svg',
-            alt: 'Imagen adicional de referencia del Ático',
-            caption: 'Detalle del Ático',
-          },
-          {
-            src: '/landing/atico/placeholder-detail-2.svg',
-            alt: 'Segunda imagen adicional de referencia del Ático',
-            caption: 'Galería del Ático',
           },
         ],
         location: {
@@ -185,20 +177,10 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
         ],
         gallery: [
           {
-            src: '/landing/jardin/placeholder-primary.svg',
-            alt: 'Imagen de referencia del Jardín',
-            caption: 'Imagen principal del Jardín',
+            src: '/landing/jardin/jardin-primary.png',
+            alt: 'Vista de Jardín con zona verde y piscina',
+            caption: 'Vista principal de Jardín',
             isPrimary: true,
-          },
-          {
-            src: '/landing/jardin/placeholder-detail-1.svg',
-            alt: 'Imagen adicional de referencia del Jardín',
-            caption: 'Detalle del Jardín',
-          },
-          {
-            src: '/landing/jardin/placeholder-detail-2.svg',
-            alt: 'Segunda imagen adicional de referencia del Jardín',
-            caption: 'Galería del Jardín',
           },
         ],
         location: {
@@ -274,8 +256,8 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
           headline: 'Upper light and calm',
           summary: 'A bright upper-apartment start.',
           image: {
-            src: '/landing/atico/placeholder-primary.svg',
-            alt: 'Reference image for Ático',
+            src: '/landing/atico/atico-primary.png',
+            alt: 'View from Ático toward the sea',
           },
           ctaLabel: 'View Ático',
           ctaHref: '#atico',
@@ -286,8 +268,8 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
           headline: 'Calm with outdoor ease',
           summary: 'A calm first look at Jardín.',
           image: {
-            src: '/landing/jardin/placeholder-primary.svg',
-            alt: 'Reference image for Jardín',
+            src: '/landing/jardin/jardin-primary.png',
+            alt: 'View of Jardín with green area and pool',
           },
           ctaLabel: 'View Jardín',
           ctaHref: '#jardin',
@@ -308,6 +290,7 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       gallery: 'Gallery',
       information: 'Information',
       amenities: 'Amenities',
+      highlights: 'Highlights',
       location: 'Location',
       inquiry: 'Inquiry',
     },
@@ -320,35 +303,25 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       {
         id: 'atico',
         displayName: 'Ático',
-        headline: 'Ático, an independent stay within Ático y Jardín',
+        headline: 'Ático, a bright space within Ático y Jardín',
         summary:
-          'An apartment presented with its own gallery, separate information, and direct inquiry path.',
+          'A bright space shaped for comfortable stays, with more information available on inquiry.',
         description:
-          'Ático is presented as an independent option for reviewing details, asking questions, and moving forward only once availability is confirmed through direct contact.',
-        capacityLabel: 'Ask about capacity',
-        bedroomsLabel: 'Ask about layout',
-        bathroomsLabel: 'Ask about bathrooms',
+          'Ático is presented with a short, clear overview for reviewing the atmosphere, asking questions, and requesting pending details through direct contact.',
+        capacityLabel: 'More information available on inquiry',
+        bedroomsLabel: 'Layout available on inquiry',
+        bathroomsLabel: 'Details available on inquiry',
         amenities: [
-          { label: 'Dedicated gallery and profile' },
-          { label: 'Direct inquiry before booking' },
-          { label: 'Final details shared before confirmation' },
+          { label: 'A bright space shaped for comfortable stays' },
+          { label: 'Quick overview to guide the inquiry' },
+          { label: 'More details available through direct contact' },
         ],
         gallery: [
           {
-            src: '/landing/atico/placeholder-primary.svg',
-            alt: 'Reference image for Ático',
-            caption: 'Main image for Ático',
+            src: '/landing/atico/atico-primary.png',
+            alt: 'View from Ático toward the sea',
+            caption: 'Main view of Ático',
             isPrimary: true,
-          },
-          {
-            src: '/landing/atico/placeholder-detail-1.svg',
-            alt: 'Additional reference image for Ático',
-            caption: 'Ático detail',
-          },
-          {
-            src: '/landing/atico/placeholder-detail-2.svg',
-            alt: 'Second additional reference image for Ático',
-            caption: 'Ático gallery',
           },
         ],
         location: {
@@ -378,20 +351,10 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
         ],
         gallery: [
           {
-            src: '/landing/jardin/placeholder-primary.svg',
-            alt: 'Reference image for Jardín',
-            caption: 'Main image for Jardín',
+            src: '/landing/jardin/jardin-primary.png',
+            alt: 'View of Jardín with green area and pool',
+            caption: 'Main view of Jardín',
             isPrimary: true,
-          },
-          {
-            src: '/landing/jardin/placeholder-detail-1.svg',
-            alt: 'Additional reference image for Jardín',
-            caption: 'Jardín detail',
-          },
-          {
-            src: '/landing/jardin/placeholder-detail-2.svg',
-            alt: 'Second additional reference image for Jardín',
-            caption: 'Jardín gallery',
           },
         ],
         location: {

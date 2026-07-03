@@ -15,8 +15,8 @@ the public website; use TODO placeholders until content is provided.
 
 ## Ático
 
-- Photos: TODO(images).
-- Primary hero/gallery image: TODO(images).
+- Photos: Primary image provided for Friday demo; additional images TODO(images).
+- Primary hero/gallery image: `frontend/public/landing/atico/atico-primary.png`.
 - Description: TODO(content).
 - Short summary: TODO(content).
 - Amenities: TODO(content).
@@ -32,8 +32,8 @@ the public website; use TODO placeholders until content is provided.
 
 ## Jardín
 
-- Photos: TODO(images).
-- Primary hero/gallery image: TODO(images).
+- Photos: Primary image provided for Friday demo; additional images TODO(images).
+- Primary hero/gallery image: `frontend/public/landing/jardin/jardin-primary.png`.
 - Description: TODO(content).
 - Short summary: TODO(content).
 - Amenities: TODO(content).
