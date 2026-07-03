@@ -153,9 +153,7 @@ describe('PublicLandingPage', () => {
 
     const compiled = fixture.nativeElement as HTMLElement;
     const aticoSection = compiled.querySelector<HTMLElement>('#atico');
-    const heroLinks = Array.from(
-      compiled.querySelectorAll<HTMLAnchorElement>('.hero-panel a'),
-    );
+    const heroLinks = Array.from(compiled.querySelectorAll<HTMLAnchorElement>('.hero-panel a'));
     const aticoHeroLink = heroLinks.find((link) => link.textContent?.trim() === 'Ver Ático');
 
     expect(aticoSection?.id).toBe('atico');
