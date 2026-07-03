@@ -18,12 +18,11 @@
 
   <section class="brand-intro" aria-labelledby="brand-intro-title">
     <div>
-      <p class="eyebrow">v0.1.0</p>
       <h2 id="brand-intro-title">{{ text().publicLanding.intro.title }}</h2>
       <p>{{ text().publicLanding.intro.body }}</p>
     </div>
 
-    <ul class="intro-notes" aria-label="Content status">
+    <ul class="intro-notes" [attr.aria-label]="text().publicLanding.intro.highlightsLabel">
       @for (note of text().publicLanding.intro.notes; track note) {
         <li>{{ note }}</li>
       }
@@ -169,25 +168,33 @@
         <div class="form-grid">
           <label>
             {{ text().publicLanding.inquiry.checkInLabel }}
-            <input type="text" readonly placeholder="TODO(owner/user)" />
+            <input type="text" readonly [placeholder]="text().publicLanding.inquiry.checkInLabel" />
           </label>
           <label>
             {{ text().publicLanding.inquiry.checkOutLabel }}
-            <input type="text" readonly placeholder="TODO(owner/user)" />
+            <input
+              type="text"
+              readonly
+              [placeholder]="text().publicLanding.inquiry.checkOutLabel"
+            />
           </label>
         </div>
 
         <label>
           {{ text().publicLanding.inquiry.guestNameLabel }}
-          <input type="text" readonly placeholder="TODO(guest)" />
+          <input type="text" readonly [placeholder]="text().publicLanding.inquiry.guestNameLabel" />
         </label>
         <label>
           {{ text().publicLanding.inquiry.guestContactLabel }}
-          <input type="text" readonly placeholder="TODO(guest)" />
+          <input
+            type="text"
+            readonly
+            [placeholder]="text().publicLanding.inquiry.guestContactLabel"
+          />
         </label>
         <label>
           {{ text().publicLanding.inquiry.messageLabel }}
-          <textarea readonly placeholder="TODO(guest)"></textarea>
+          <textarea readonly [placeholder]="text().publicLanding.inquiry.messageLabel"></textarea>
         </label>
 
         <button type="submit" disabled>{{ text().publicLanding.inquiry.submitLabel }}</button>

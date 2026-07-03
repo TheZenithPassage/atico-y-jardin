@@ -29,6 +29,19 @@ describe('App', () => {
     expect(compiled.querySelector('h1')?.textContent).toContain('Ático y Jardín');
   });
 
+  it('shows private access navigation to unauthenticated visitors', () => {
+    const fixture = TestBed.createComponent(App);
+
+    fixture.detectChanges();
+
+    const links = Array.from(
+      fixture.nativeElement.querySelectorAll('nav a'),
+    ) as HTMLAnchorElement[];
+    const privateAccessLink = links.find((link) => link.getAttribute('href') === '/login');
+
+    expect(privateAccessLink?.textContent).toContain('Acceso privado');
+  });
+
   it('shows account management navigation to ADMIN', () => {
     const authSessionService = TestBed.inject(AuthSessionService);
     authSessionService.login(
