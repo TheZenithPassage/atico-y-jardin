@@ -47,7 +47,9 @@
   @for (apartment of text().publicLanding.apartments; track apartment.id) {
     <section
       class="apartment-section"
+      [class.apartment-section--atico]="apartment.id === 'atico'"
       [id]="apartment.id"
+      [attr.data-apartment-id]="apartment.id"
       [attr.aria-labelledby]="apartment.id + '-title'"
     >
       <div class="section-heading">
@@ -57,7 +59,11 @@
       </div>
 
       <div class="apartment-layout">
-        <section class="gallery" [attr.aria-labelledby]="apartment.id + '-gallery-title'">
+        <section
+          class="gallery"
+          [class.gallery--atico]="apartment.id === 'atico'"
+          [attr.aria-labelledby]="apartment.id + '-gallery-title'"
+        >
           <div class="subsection-heading">
             <p class="eyebrow">{{ text().publicLanding.sectionLabels.gallery }}</p>
             <h3 [id]="apartment.id + '-gallery-title'">{{ apartment.displayName }}</h3>
@@ -68,20 +74,26 @@
             <figcaption>{{ apartment.gallery[0].caption }}</figcaption>
           </figure>
 
-          <div class="gallery-grid">
-            @for (image of apartment.gallery; track image.src; let first = $first) {
-              @if (!first) {
-                <figure>
-                  <img [src]="image.src" [alt]="image.alt" />
-                  <figcaption>{{ image.caption }}</figcaption>
-                </figure>
+          @if (apartment.id !== 'atico') {
+            <div class="gallery-grid">
+              @for (image of apartment.gallery; track image.src; let first = $first) {
+                @if (!first) {
+                  <figure>
+                    <img [src]="image.src" [alt]="image.alt" />
+                    <figcaption>{{ image.caption }}</figcaption>
+                  </figure>
+                }
               }
-            }
-          </div>
+            </div>
+          }
         </section>
 
         <div class="apartment-details">
-          <section class="detail-group" [attr.aria-labelledby]="apartment.id + '-info-title'">
+          <section
+            class="detail-group"
+            [class.detail-group--featured]="apartment.id === 'atico'"
+            [attr.aria-labelledby]="apartment.id + '-info-title'"
+          >
             <div class="subsection-heading">
               <p class="eyebrow">{{ text().publicLanding.sectionLabels.information }}</p>
               <h3 [id]="apartment.id + '-info-title'">{{ apartment.displayName }}</h3>
@@ -104,12 +116,22 @@
             </dl>
           </section>
 
-          <section class="detail-group" [attr.aria-labelledby]="apartment.id + '-amenities-title'">
+          <section
+            class="detail-group detail-group--highlights"
+            [class.detail-group--atico-highlights]="apartment.id === 'atico'"
+            [attr.aria-labelledby]="apartment.id + '-amenities-title'"
+          >
             <div class="subsection-heading">
-              <p class="eyebrow">{{ text().publicLanding.sectionLabels.amenities }}</p>
+              <p class="eyebrow">
+                {{
+                  apartment.id === 'atico'
+                    ? text().publicLanding.sectionLabels.highlights
+                    : text().publicLanding.sectionLabels.amenities
+                }}
+              </p>
               <h3 [id]="apartment.id + '-amenities-title'">{{ apartment.displayName }}</h3>
             </div>
-            <ul class="amenity-list">
+            <ul class="amenity-list" [class.amenity-list--atico]="apartment.id === 'atico'">
               @for (amenity of apartment.amenities; track amenity.label) {
                 <li>{{ amenity.label }}</li>
               }

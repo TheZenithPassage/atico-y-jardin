@@ -239,6 +239,22 @@ figcaption,
   padding: 2rem;
 }
 
+.apartment-section--atico {
+  border-color: rgb(232 137 63 / 0.34);
+  background:
+    linear-gradient(180deg, rgb(255 253 248 / 0.98), rgb(241 249 247 / 0.98)),
+    #fffdf8;
+  box-shadow: 0 20px 46px rgb(41 59 57 / 0.14);
+}
+
+.apartment-section--atico .section-heading {
+  max-width: 46rem;
+}
+
+.apartment-section--atico .section-heading .eyebrow {
+  color: #a55432;
+}
+
 .location-contact,
 .contact-layout {
   scroll-margin-top: 6rem;
@@ -308,6 +324,16 @@ figcaption,
   background: #fffdf8;
 }
 
+.detail-group--featured {
+  border-color: rgb(232 137 63 / 0.35);
+  background: #fff8ef;
+}
+
+.detail-group--atico-highlights {
+  border-color: rgb(49 95 91 / 0.24);
+  background: #f5faf6;
+}
+
 .info-list,
 .contact-details dl {
   display: grid;
@@ -337,6 +363,17 @@ dd {
 
 .apartment-cta {
   background: #f8efe7;
+}
+
+.amenity-list--atico {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.amenity-list--atico li {
+  border-color: rgb(232 137 63 / 0.28);
+  border-left: 4px solid #e8893f;
+  background: #ffffff;
+  color: #244a45;
 }
 
 .contact-layout {
@@ -384,8 +421,17 @@ button:disabled {
 
   .brand-intro,
   .apartment-layout,
-  .contact-layout {
+  .contact-layout,
+  .amenity-list--atico {
     grid-template-columns: 1fr;
+  }
+
+  .apartment-section--atico .apartment-details {
+    order: 1;
+  }
+
+  .apartment-section--atico .gallery {
+    order: 2;
   }
 
   .hero,

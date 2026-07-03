@@ -33,6 +33,7 @@ export interface PublicLandingTranslations {
     gallery: string;
     information: string;
     amenities: string;
+    highlights: string;
     location: string;
     inquiry: string;
   };
@@ -115,6 +116,7 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       gallery: 'Galería',
       information: 'Información',
       amenities: 'Servicios',
+      highlights: 'Puntos destacados',
       location: 'Ubicación',
       inquiry: 'Consulta',
     },
@@ -127,18 +129,18 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       {
         id: 'atico',
         displayName: 'Ático',
-        headline: 'Ático, una estancia independiente dentro de Ático y Jardín',
+        headline: 'Ático, un espacio luminoso dentro de Ático y Jardín',
         summary:
-          'Un apartamento presentado con galería propia, información separada y consulta directa.',
+          'Un espacio luminoso pensado para estancias cómodas, con más información bajo consulta.',
         description:
-          'El Ático se muestra como una propuesta independiente para revisar detalles, resolver dudas y avanzar solo cuando la disponibilidad se confirme por contacto directo.',
-        capacityLabel: 'Consultar capacidad',
-        bedroomsLabel: 'Consultar distribución',
-        bathroomsLabel: 'Consultar baños',
+          'El Ático se presenta con una lectura breve para imaginar el ambiente, resolver dudas y pedir los detalles pendientes por contacto directo.',
+        capacityLabel: 'Más información disponible bajo consulta',
+        bedroomsLabel: 'Distribución disponible bajo consulta',
+        bathroomsLabel: 'Detalles disponibles bajo consulta',
         amenities: [
-          { label: 'Galería y ficha propias' },
-          { label: 'Consulta directa antes de reservar' },
-          { label: 'Detalles finales compartidos antes de confirmar' },
+          { label: 'Un espacio luminoso pensado para estancias cómodas' },
+          { label: 'Lectura rápida para orientar la consulta' },
+          { label: 'Más detalles disponibles por contacto directo' },
         ],
         gallery: [
           {
@@ -308,6 +310,7 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       gallery: 'Gallery',
       information: 'Information',
       amenities: 'Amenities',
+      highlights: 'Highlights',
       location: 'Location',
       inquiry: 'Inquiry',
     },
@@ -320,18 +323,18 @@ export const PUBLIC_LANDING_TRANSLATIONS = {
       {
         id: 'atico',
         displayName: 'Ático',
-        headline: 'Ático, an independent stay within Ático y Jardín',
+        headline: 'Ático, a bright space within Ático y Jardín',
         summary:
-          'An apartment presented with its own gallery, separate information, and direct inquiry path.',
+          'A bright space shaped for comfortable stays, with more information available on inquiry.',
         description:
-          'Ático is presented as an independent option for reviewing details, asking questions, and moving forward only once availability is confirmed through direct contact.',
-        capacityLabel: 'Ask about capacity',
-        bedroomsLabel: 'Ask about layout',
-        bathroomsLabel: 'Ask about bathrooms',
+          'Ático is presented with a short, clear overview for reviewing the atmosphere, asking questions, and requesting pending details through direct contact.',
+        capacityLabel: 'More information available on inquiry',
+        bedroomsLabel: 'Layout available on inquiry',
+        bathroomsLabel: 'Details available on inquiry',
         amenities: [
-          { label: 'Dedicated gallery and profile' },
-          { label: 'Direct inquiry before booking' },
-          { label: 'Final details shared before confirmation' },
+          { label: 'A bright space shaped for comfortable stays' },
+          { label: 'Quick overview to guide the inquiry' },
+          { label: 'More details available through direct contact' },
         ],
         gallery: [
           {
